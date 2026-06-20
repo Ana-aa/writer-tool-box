@@ -1,0 +1,32 @@
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../../node_modules/bootstrap/scss/mixins';
+@import '../../styles/variables';
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    background-color: $light-purple;
+
+    & .footer-text {
+        background-color: $light-purple;
+        &__main {
+            background-color: $light-purple;
+            font-size: 14px;
+            color: $light-primary;
+
+            & .footer-text__email {
+                background-color: $light-purple;
+                font-size: 12px;
+                color: $light-primary;
+                cursor: text;
+
+                &:hover {
+                    color: $light-primary;
+                }
+            }
+        }
+    }
+}
