@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CountCaracter } from './count-caracter';
+import { CountCaracter } from './count-caracter.component';
 
 describe('CountCaracter', () => {
   let component: CountCaracter;

@@ -1,0 +1,72 @@
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../../node_modules/bootstrap/scss/mixins';
+@import '../../styles/variables';
+
+.count-caracter {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+
+    &__title {
+        font-size: 1.5rem;
+        font-weight: 650;
+        margin-bottom: 0.8rem;
+        color: $light-purple;
+    }
+
+    &__textarea {
+        width: 100%;
+        height: 100px;
+        padding: 1rem;
+        border: 1px solid $light-purple;
+        border-radius: $border-radius;
+        font-size: 1rem;
+        color: $light-text;
+        background-color: $light-cards;
+
+        &:focus {
+            outline: none;
+            border-color: $light-purple-hover;
+            box-shadow: 0 0 0 0.2rem rgba($light-purple-hover, 0.25);
+        }
+    }
+
+    &__result {
+        margin-top: 0.9rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__result-text-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 0.8rem;
+    }
+
+    &__char-bar-container {
+        width: 100%;
+        height: 8px;
+        border-radius: 999px;
+        margin-top: 0.5rem;
+        background-color: #FFFFFF;
+    }
+
+    &__char-bar {
+        height: 100%;
+        background: $light-purple;
+        border-radius: 999px;
+        transition: width 0.3s ease, background 0.2s;
+    }
+
+    &__result-count {
+        width: fit-content;
+        margin-top: 0.9rem;
+        font-size: 0.9rem;
+        color: $light-primary;
+        background-color: $light-purple;
+        padding: 0.2rem 0.5rem;
+        border-radius: $border-radius;
+    }
+}
