@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 16px;
+    padding: 20px;
     background-color: $light-purple;
 
     & .footer-text {
@@ -16,6 +16,7 @@
             background-color: $light-purple;
             font-size: 14px;
             color: $light-primary;
+            margin-bottom: 0;
 
             & .footer-text__email {
                 background-color: $light-purple;

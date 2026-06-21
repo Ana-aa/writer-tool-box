@@ -1,0 +1,15 @@
+<div class="config-count-container">
+    <p class="config-count__title">
+        Configurar limite
+    </p>
+
+    <input 
+        type="number"
+        min="1"
+        max="9999"
+        value="33" 
+        class="config-count__input-config"
+        (input)="onInputChange($event)"
+    >
+    <span class="config-count__span"> chars</span>
+</div>
