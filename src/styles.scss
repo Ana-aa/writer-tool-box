@@ -1,10 +1,4 @@
-@import "bootstrap/scss/bootstrap";
-@import 'styles/font.css';
-@import 'devices.css/dist/devices.min.css';
-
-@import '../node_modules/bootstrap/scss/functions';
-@import '../node_modules/bootstrap/scss/variables';
-@import '../node_modules/bootstrap/scss/mixins';
+@use 'styles/font' as *;
 
 html {
     height: 100%;

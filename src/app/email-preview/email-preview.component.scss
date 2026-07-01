@@ -1,5 +1,5 @@
-@import '../../../src/styles/button.scss';
-@import '../../../src/styles/textarea.scss';
+@use '../../styles/button' as *;
+@use '../../styles/textarea' as *;
 
 .email-preview-container {
     display: flex;

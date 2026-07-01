@@ -1,7 +1,5 @@
-@import '../../../node_modules/bootstrap/scss/functions';
-@import '../../../node_modules/bootstrap/scss/variables';
-@import '../../../node_modules/bootstrap/scss/mixins';
-@import '../../styles/variables';
+@use '../../styles/variables' as *;
+@use '../../styles/textarea' as *;
 
 .header-container {
     display: flex;
@@ -20,7 +18,7 @@
             & img {
                 width: 3rem;
 
-                @include media-breakpoint-up(md) {
+                @media (min-width: 768px) {
                     width: 10rem;
                 }
             }
@@ -56,10 +54,6 @@
                     }
                 }
             }
-
-            @include media-breakpoint-up(md) {
-                gap: 50px;
-            }
         }
-    }
+    }    
 }

@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/textarea.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/textarea' as *;
 
 .push-preview-container {
     display: flex;
