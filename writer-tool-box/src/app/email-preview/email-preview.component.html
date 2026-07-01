@@ -1,0 +1,125 @@
+<div class="email-preview-container">
+    <h2>Preview de e-mail</h2>
+    <div class="email-preview-container__input-device">
+        <div class="email-preview-container__container">
+            @for (email of emails; track $index) {
+                <div 
+                    class="email-preview-container__input-text"
+                >
+                    <div class="email-preview-container__input-header">
+                        <label for="titulo">
+                            Nome empresa
+                            @if ($index > 0) {
+                                {{ $index + 1 }}
+                            }
+                        </label>
+                        
+                        <textarea 
+                            class="textarea"
+                            placeholder="Digite o nome"
+                            maxlength="35"
+                            (input)="onNameChange($event,$index)"
+                        ></textarea>
+                    </div>
+
+                    <div class="email-preview-container__input-header">
+                        <label for="titulo">
+                            Assunto
+                            @if ($index > 0) {
+                                {{ $index + 1 }}
+                            }
+                        </label>
+                        <textarea
+                            class="textarea"
+                            placeholder="Digite o header"
+                            maxlength="50"
+                            (input)="onHeaderChange($event,$index)"
+                        ></textarea>
+                    </div>
+
+                    
+
+                    <div class="email-preview-container__input-pre-header">
+                        <label for="pre-header">
+                            Pré-header
+                            @if ($index > 0) {
+                                {{ $index + 1 }}
+                            }
+                        </label>
+                        <textarea
+                            class="textarea"
+                            placeholder="Digite o pré-header"
+                            maxlength="90"
+                            (input)="onPreHeaderChange($event,$index)"
+                        ></textarea>
+                    </div>
+                </div>
+            }
+            
+            <div class="btn-preview">
+                <button 
+                    class="btn-primary-purple"
+                    (click)="addNewPeview()"
+                >
+                    Adicionar +
+                </button>
+
+                <button 
+                    class="btn-primary-purple"
+                    (click)="clearPeview()"
+                >
+                    Limpar
+                </button>
+            </div>
+
+        </div>
+
+        <app-device-preview>
+            <div class="email-device">
+                <div class="top-email">
+                    <p>Caixa de entrada</p>
+                </div>
+
+                @for (email of emails; track $index) {
+
+                    <div class="container-email">
+
+                        <div class="box-email">
+
+                            <div class="icon-container">
+                                <span class="icon">WT</span>
+                            </div>
+                            
+                            <div class="texts-email">
+                                <div class="text-name-email">
+                                    <span class="text-name-device">
+                                        {{ email.nameEnterprise }}
+                                    </span>
+                                    <span class="data">26 de jun.</span>
+                                </div>
+                                
+                                <div class="text-header-preheader">
+                                    <div class="text-header-email">
+                                        <span class="text-header-device">
+                                            {{ email.headerText }}
+                                        </span>
+                                    </div>
+
+                                    <div class="text-pre-header-email">
+                                        <span class="text-pre-header-device">
+                                            {{ email.preHeaderText }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }        
+            </div>
+        </app-device-preview>
+
+        <app-configuration-count>
+
+        </app-configuration-count>
+    </div>    
+</div> 

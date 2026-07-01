@@ -7,11 +7,11 @@ import { CountCaracterComponent } from './count-caracter/count-caracter.componen
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet, 
+    RouterOutlet,
     HeaderComponent,
     FooterComponent,
-    CountCaracterComponent,
-  ],
+    CountCaracterComponent
+],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

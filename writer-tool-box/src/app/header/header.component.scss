@@ -33,7 +33,7 @@
             flex-direction: row;
             align-items: space-between;
             list-style: none;
-            gap: 50px;
+            gap: 5px;
             padding-top: 10px;
 
             &__item {
@@ -58,7 +58,7 @@
             }
 
             @include media-breakpoint-up(md) {
-                gap: 5px;
+                gap: 50px;
             }
         }
     }

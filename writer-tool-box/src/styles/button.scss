@@ -1,0 +1,18 @@
+@import '../../../writer-tool-box/src/styles/variables';
+
+.btn-primary-purple {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: $light-btn-primary;
+    color: $light-primary;
+    border: none;
+    border-radius: $border-radius;
+    text-decoration: none;
+
+    &:hover {
+        color: #dad9d9;
+        background-color: $light-btn-primary-hover;
+    }
+}

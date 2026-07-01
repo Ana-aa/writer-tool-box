@@ -1,5 +1,6 @@
 @import "bootstrap/scss/bootstrap";
 @import 'styles/font.css';
+@import 'devices.css/dist/devices.min.css';
 
 @import '../node_modules/bootstrap/scss/functions';
 @import '../node_modules/bootstrap/scss/variables';
@@ -20,5 +21,5 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
-    background-color: #FFFFFF;
+    //background-color: #FFFFFF;
 }

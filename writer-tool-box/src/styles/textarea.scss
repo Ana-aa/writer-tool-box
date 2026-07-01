@@ -1,0 +1,14 @@
+.textarea {
+    width: 100%;
+    border: 1px solid $light-purple;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    color: $light-text;
+    background-color: #f4f2fa;
+
+    &:focus {
+        outline: none;
+        border-color: $light-purple-hover;
+        box-shadow: 0 0 0 0.2rem rgba($light-purple-hover, 0.25);
+    }
+}

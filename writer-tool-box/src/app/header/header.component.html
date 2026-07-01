@@ -9,18 +9,28 @@
     </div>
     <nav class="navigation">
       <ul class="navigation-list">
+
         <li class="navigation-list__item">
-          <a class="btn-header">Contador de caracteres</a>
+          <a class="btn-header" (click)="goToCountCaracter()">Contador de caracteres</a>
         </li>
+
         <li class="navigation-list__item">
-          <a class="btn-header">Preview de push</a>
+          <a class="btn-header" (click)="goToPushPreview()">Preview de push</a>
         </li>
+
         <li class="navigation-list__item">
-          <a class="btn-header">Preview de e-mail</a>
+          <a class="btn-header" (click)="goToEmailPreview()">Preview de e-mail</a>
         </li>
+
         <li class="navigation-list__item">
-          <a class="btn-header">Limites configuráveis</a>
+          <a class="btn-header" (click)="goToWppPreview()">Preview de whatsapp</a>
         </li>
+
+        <li class="navigation-list__item">
+          <a class="btn-header" (click)="goToConfigationCount()">Limites configuráveis</a>
+        </li>
+
+
       </ul>
     </nav>
   </header>

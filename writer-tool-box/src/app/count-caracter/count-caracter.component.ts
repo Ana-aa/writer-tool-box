@@ -1,6 +1,6 @@
 import { Component,ViewChild, ElementRef, Input } from '@angular/core';
 import { NgClass } from "@angular/common";
-import { ConfigurationCountComponent } from "../configuration.component/configuration-count.component";
+import { ConfigurationCountComponent } from "../configuration/configuration-count.component";
 
 @Component({
   selector: 'app-count-caracter',
@@ -25,14 +25,13 @@ export class CountCaracterComponent {
 
   updateBar() {
     const percentage = (this.charCount / this.characterLimit) * 100;
-    console.log('charCount: ', this.charCount, 'percentage: ', percentage);
     this.charBar.nativeElement.style.width = percentage + '%';
   }
 
   onLimitChange(newLimit: number) {
     this.characterLimit = newLimit;
     this.updateBar();
-  }
+  } 
 
   getBarStatus(): string {
     if (this.charCount >= this.characterLimit) {

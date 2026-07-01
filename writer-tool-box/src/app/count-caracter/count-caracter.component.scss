@@ -2,6 +2,7 @@
 @import '../../../node_modules/bootstrap/scss/variables';
 @import '../../../node_modules/bootstrap/scss/mixins';
 @import '../../styles/variables';
+@import '../../styles/textarea.scss';
 
 .count-caracter {
     display: flex;
@@ -13,23 +14,6 @@
         font-weight: 650;
         margin-bottom: 0.8rem;
         color: $light-purple;
-    }
-
-    &__textarea {
-        width: 100%;
-        height: 100px;
-        padding: 1rem;
-        border: 1px solid $light-purple;
-        border-radius: $border-radius;
-        font-size: 1rem;
-        color: $light-text;
-        background-color: $light-cards;
-
-        &:focus {
-            outline: none;
-            border-color: $light-purple-hover;
-            box-shadow: 0 0 0 0.2rem rgba($light-purple-hover, 0.25);
-        }
     }
 
     &__result {
@@ -93,4 +77,8 @@
             background-color: $light-red-error;
         }
     }
+}
+
+.textarea {
+    padding: 1rem;
 }

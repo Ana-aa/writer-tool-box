@@ -1,0 +1,76 @@
+@import '../../styles/variables';
+@import '../../styles/textarea.scss';
+
+.push-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: auto;
+    padding-left: 48px;
+    padding: 3rem;
+
+    
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 650;
+        color: #9061F9;
+        margin-bottom: 0.8rem;
+    }
+
+    &__input-device{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    &__input-text{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 5px;
+        margin-right: 40px;
+    }
+
+    label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #9061F9;
+    }
+
+    &__input-header, &__input-pre-header {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 20px;
+    }
+
+
+    input {
+        width: auto;
+        border-radius: 8px;
+        border: 1px solid #A78BFA;
+        padding: 5px;
+
+        &:focus {
+            border-color: #220455;
+            outline: none;
+        }
+
+        &:focus-visible {
+            border-color: #7C3AED;
+            outline: none;
+        }
+    }
+}
+
+.text-device {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
