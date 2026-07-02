@@ -1,0 +1,1 @@
+Writer Toolbox é uma suíte de ferramentas para UX Writers e profissionais de CRM, permitindo validar limites de caracteres e visualizar previews reais de e-mails, push notifications e outros canais digitais.
