@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { DevicePreview } from '../device-preview/device-frame.component';
 import { ConfigurationCountComponent } from "../configuration/configuration-count.component";
 
@@ -12,6 +12,10 @@ import { ConfigurationCountComponent } from "../configuration/configuration-coun
   styleUrl: './email-preview.component.scss',
 })
 export class EmailPreview {
+  @Input() characterLimit = 33;
+  charCount = 0;
+
+  @ViewChild('charPreview') charPreview!: ElementRef;
   
   currentName = '';
   currentHeader = '';
@@ -57,4 +61,28 @@ export class EmailPreview {
     this.currentCleanText = '';
   }
 
+  updatePreview() {
+    this.currentName = this.emails[0].nameEnterprise;
+    this.currentHeader = this.emails[0].headerText;
+    this.currentPreHeader = this.emails[0].preHeaderText;
+  }
+
+  getBarStatus(): string {
+    if (this.charCount >= this.characterLimit) {
+      return 'danger';
+    } else if (this.charCount >= this.characterLimit * 0.8) {
+      return 'warning';
+    } else {
+      return 'ok';
+    }
+  }
+
+  @ViewChild('resultCount') resultCount!: ElementRef;
+
+  onTextChange(event: any) {
+    this.charCount = event.target.value.length;
+    this.updatePreview();
+  }
+
 }
+ 

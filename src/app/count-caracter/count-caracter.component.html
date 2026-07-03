@@ -39,8 +39,10 @@
         </span>
         
     </div>        
+
+    <app-configuration-count (limitChange)="onLimitChange($event)">
+        <span class="config-count__span">chars</span>
+    </app-configuration-count>
 </div>
-<app-configuration-count
-    (limitChange)="onLimitChange($event)"
-></app-configuration-count>
+
  

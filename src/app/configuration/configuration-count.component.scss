@@ -11,12 +11,8 @@
 
     input {
         width: 3rem;
-        margin-left: auto;
         border-radius: $border-radius;
         text-align: center;
-    }
-
-    &__btn{
-        
+        margin-bottom: 10px;
     }
 }
