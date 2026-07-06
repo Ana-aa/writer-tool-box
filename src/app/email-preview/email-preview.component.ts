@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { DevicePreview } from '../device-preview/device-frame.component';
 import { ConfigurationCountComponent } from "../configuration/configuration-count.component";
 
@@ -6,7 +7,8 @@ import { ConfigurationCountComponent } from "../configuration/configuration-coun
   selector: 'app-email-preview',
   imports: [
     DevicePreview,
-    ConfigurationCountComponent
+    ConfigurationCountComponent,
+    FormsModule
 ],
   templateUrl: './email-preview.component.html',
   styleUrl: './email-preview.component.scss',
@@ -84,5 +86,14 @@ export class EmailPreview {
     this.updatePreview();
   }
 
+  clearPreview() {
+    this.emails = [
+      {
+        nameEnterprise: '',
+        headerText: '',
+        preHeaderText: ''
+      }
+    ]
+  }
 }
  

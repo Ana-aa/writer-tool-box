@@ -1,5 +1,6 @@
 @use '../../styles/button' as *;
 @use '../../styles/textarea' as *;
+@use '../../styles/variables' as *;
 
 .email-preview-container {
     display: flex;
@@ -205,9 +206,18 @@
 .btn-preview {
     display: flex;
     justify-content: space-between;
+    margin-right: 40px;
 }
 
 .configuration {
     margin-left: 48px;
 }
 
+.result-char-header__result-count {
+    width: 65px;
+    padding: 5px 10px;
+    border-radius: 50px;
+    margin-top: 5px;
+    background-color: $light-purple;
+    color: white;
+}

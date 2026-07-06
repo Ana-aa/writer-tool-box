@@ -19,6 +19,7 @@
                             placeholder="Digite o nome da empresa"
                             maxlength="20"
                             (input)="onNameChange($event,$index)"
+                            [(ngModel)]="email.nameEnterprise"
                         ></textarea>
                         <span 
                             id="result-char-header"
@@ -41,7 +42,15 @@
                             placeholder="Digite o header"
                             maxlength="60"
                             (input)="onHeaderChange($event,$index)"
+                            [(ngModel)]="email.headerText"
                         ></textarea>
+                        <span 
+                            id="result-char-header"
+                            class="result-char-header__result-count"
+                        >
+                            {{ charCount }} / {{ characterLimit }}
+
+                        </span>
                     </div>
 
                     
@@ -58,7 +67,15 @@
                             placeholder="Digite o pré-header"
                             maxlength="100"
                             (input)="onPreHeaderChange($event,$index)"
+                            [(ngModel)]="email.preHeaderText"
                         ></textarea>
+                        <span 
+                            id="result-char-header"
+                            class="result-char-header__result-count"
+                        >
+                            {{ charCount }} / {{ characterLimit }}
+
+                        </span>
                     </div>
                 </div>
             }
@@ -73,7 +90,7 @@
 
                 <button 
                     class="btn-primary-purple"
-                    (click)="clearPeview()"
+                    (click)="clearPreview()"
                 >
                     Limpar
                 </button>
