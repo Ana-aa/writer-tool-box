@@ -17,15 +17,16 @@
                         <textarea 
                             class="textarea"
                             placeholder="Digite o nome da empresa"
-                            maxlength="20"
+                            [attr.maxlength]="limitName"
                             (input)="onNameChange($event,$index)"
                             [(ngModel)]="email.nameEnterprise"
                         ></textarea>
                         <span 
                             id="result-char-header"
                             class="result-char-header__result-count"
+                            [ngClass]="'result-char-header__result-count--' + getStatusName()"
                         >
-                            {{ charCount }} / {{ characterLimit }}
+                            {{ charCountName }} / {{ limitName }}
 
                         </span>
                     </div>
@@ -40,7 +41,7 @@
                         <textarea
                             class="textarea"
                             placeholder="Digite o header"
-                            maxlength="60"
+                            [attr.maxlength]="limitHeader"
                             (input)="onHeaderChange($event,$index)"
                             [(ngModel)]="email.headerText"
                         ></textarea>
@@ -54,6 +55,15 @@
                     </div>
 
                     
+                        <span 
+                            id="result-char-header"
+                            class="result-char-header__result-count"
+                            [ngClass]="'result-char-header__result-count--' + getStatusHeader()"
+                        >
+                            {{ charCountHeader }} / {{ limitHeader }}
+
+                        </span>
+                    </div>                    
 
                     <div class="email-preview-container__input-pre-header">
                         <label for="pre-header">
@@ -65,38 +75,57 @@
                         <textarea
                             class="textarea"
                             placeholder="Digite o pré-header"
-                            maxlength="100"
+                            [attr.maxlength]="limitPreHeader"
                             (input)="onPreHeaderChange($event,$index)"
                             [(ngModel)]="email.preHeaderText"
                         ></textarea>
                         <span 
                             id="result-char-header"
                             class="result-char-header__result-count"
+                            [ngClass]="'result-char-header__result-count--' + getStatusPreHeader()"
                         >
-                            {{ charCount }} / {{ characterLimit }}
+                            {{ charCountPreHeader }} / {{ limitPreHeader }}
 
                         </span>
+
+                        @if (shouldShowPreviewTip()) {
+                            <div class="preview-tip">
+                                <span class="preview-tip__text">
+                                    <img 
+                                        src="../../assets/atencao.png" alt="Ícone de atenção" 
+                                        class="preview-tip__icon"
+                                    >
+                                    <p 
+                                        class="preview-tip__paragrafh"
+                                        [innerHTML]="complementText()"
+                                    >
+                                        {{ complementText() }}
+                                    </p>
+                                </span>
+                            </div>
+                        }
                     </div>
-                </div>
+                </div>       
             }
-            
+
             <div class="btn-preview">
                 <button 
                     class="btn-primary-purple"
                     (click)="addNewPeview()"
+                    [disabled]="emails.length >= 2"
                 >
-                    Adicionar +
+                    Adicionar + 
                 </button>
-
                 <button 
                     class="btn-primary-purple"
                     (click)="clearPreview()"
                 >
-                    Limpar
+                    Limpar 
                 </button>
             </div>
-
+            
         </div>
+        
 
         <app-device-preview>
             <div class="email-device">
@@ -131,19 +160,19 @@
                                     <span class="text-name-device">
                                         {{ email.nameEnterprise }}
                                     </span>
-                                    <span class="data">10:41</span>
                                 </div>
+                                <span class="data">10:41</span>
                                 
                                 <div class="text-header-preheader">
                                     <div class="text-header-email">
                                         <span class="text-header-device">
-                                            {{ email.headerText }}
+                                            {{ truncateText(email.headerText, 60) }}
                                         </span>
                                     </div>
 
                                     <div class="text-pre-header-email">
                                         <span class="text-pre-header-device">
-                                            {{ email.preHeaderText }}
+                                            {{ truncateText(email.preHeaderText, 60) }} 
                                         </span>
                                     </div>
                                 </div>
@@ -156,11 +185,16 @@
     </div>
 </div>
 <div class="configuration">
-    <app-configuration-count>
-        <span class="config-count__span">assunto</span>
+    <h2 class="title-config">Configurações</h2>
+    <app-configuration-count (limitChange)="onNameLimitChange($event)">
+        <span class="config-count__span">Nome empresa</span>
     </app-configuration-count>
 
-    <app-configuration-count>
-        <span class="config-count__span">pré-header</span>
+    <app-configuration-count (limitChange)="onHeaderLimitChange($event)">
+        <span class="config-count__span">Assunto</span>
+    </app-configuration-count>
+
+    <app-configuration-count (limitChange)="onPreHeaderLimitChange($event)">
+        <span class="config-count__span">Pré-header</span>
     </app-configuration-count>
 </div>
