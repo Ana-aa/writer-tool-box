@@ -2,13 +2,15 @@ import { Component, ElementRef, Input, Output, ViewChild, EventEmitter } from '@
 import { DevicePreview } from '../device-preview/device-frame.component';
 import { ConfigurationCountComponent } from "../configuration/configuration-count.component";
 import { NgClass } from "@angular/common";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-email-preview',
   imports: [
     DevicePreview,
     ConfigurationCountComponent,
-    NgClass
+    NgClass,
+    FormsModule
 ],
   templateUrl: './email-preview.component.html',
   styleUrl: './email-preview.component.scss',
@@ -205,8 +207,7 @@ export class EmailPreview {
       }
     ]
   }
-}
- 
+
   truncateText(text: string, maxLength: number): string {
     if(!text) {
       return '';

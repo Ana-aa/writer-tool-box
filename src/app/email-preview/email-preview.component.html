@@ -48,22 +48,12 @@
                         <span 
                             id="result-char-header"
                             class="result-char-header__result-count"
+                            [ngClass]="'result-char-header__result-count--' + getStatusPreHeader()"
                         >
-                            {{ charCount }} / {{ characterLimit }}
+                            {{ charCountPreHeader }} / {{ limitPreHeader }}
 
                         </span>
                     </div>
-
-                    
-                        <span 
-                            id="result-char-header"
-                            class="result-char-header__result-count"
-                            [ngClass]="'result-char-header__result-count--' + getStatusHeader()"
-                        >
-                            {{ charCountHeader }} / {{ limitHeader }}
-
-                        </span>
-                    </div>                    
 
                     <div class="email-preview-container__input-pre-header">
                         <label for="pre-header">
