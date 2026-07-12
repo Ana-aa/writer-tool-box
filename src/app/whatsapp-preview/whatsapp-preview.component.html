@@ -1,9 +1,55 @@
 <div class="wpp-container">
     <p>em construção!</p>
+    </div>
 
-    <app-device-preview>
+    <app-device-preview [width]="'630px'">
         <ng-content>
-            <div class="preview-wpp">
+            <div class="wpp-container__preview-wpp">
+                <div class="wpp-container__background-wpp"></div>
+
+                <div class="wpp-container__box-enterprise">
+                    <div class="wpp-container__box-top-wpp">
+                        <div class="wpp-container__elements">
+                            <img src="../../assets/img/back.png" alt="Seta para voltar" class="wpp-container__icon-back">
+                        
+                            <div class="wpp-container__logo-icon"></div>
+
+                            <div class="wpp-container__name">
+                                Writer Tool Box &#x2705;
+                            </div>
+
+                            <div class="wpp-container__settings">
+                                ...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wpp-container__date">
+                    <div class="wpp-container__date-text">Hoje</div>
+                </div>
+                <div class="wpp-container__message-wpp">
+                    <div class="wpp-container__message">
+                        <div class="wpp-container__img-wpp">
+                            <img src="../../assets/img/kt-wpp.png" alt="Exemplo de imagem do Whatsapp">
+                        </div>
+                        <div class="wpp-container__message-text">
+                            <span class="wpp-container__title-message-wpp">Título da mensagem</span><br>
+                            <span class="wpp-container__subtitle-message-wpp">Subtítulo da mensagem</span><br>
+                            <span class="wpp-container__message">Mensagem do whatsapp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wpp-container__botoes">
+                    <span class="wpp-container__btn-primary">
+                        Saiba mais!
+                    </span>
+
+                    <span class="wpp-container__btn-outline">
+                        Agora não!
+                    </span>
+                </div>
                 
             </div>
         </ng-content>
