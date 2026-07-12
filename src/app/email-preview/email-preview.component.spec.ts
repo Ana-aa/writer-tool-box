@@ -19,4 +19,23 @@ describe('EmailPreview', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should allow only one extra preview block', () => {
+    expect(component.emails.length).toBe(1);
+
+    component.addNewPeview();
+    expect(component.emails.length).toBe(2);
+
+    component.addNewPeview();
+    expect(component.emails.length).toBe(2);
+  });
+
+  it('should respect the configured character limit for the name field', () => {
+    component.limitName = 5;
+
+    component.onNameChange({ target: { value: 'abcdef' } } as unknown as Event, 0);
+
+    expect(component.emails[0].nameEnterprise).toBe('abcde');
+    expect(component.charCountName).toBe(5);
+  });
 });
