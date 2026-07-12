@@ -2,9 +2,27 @@
 @use '../../styles/textarea' as *;
 @use '../../styles/variables' as *;
 
+:host ::ng-deep .device-phone {
+    left: 600px !important;
+    margin-bottom: 1rem;
+}
+
+.textarea {
+    width: 100%;
+    margin-top: 5px;
+}
 
 .wpp-container {
+    display: flex;
+    flex-direction: row;
     padding: 48px;
+
+    &____inputTitle,
+    &__inputSubtitle,
+    &__inputMessage {
+        display: flex;
+        flex-direction: column;
+    }
 
     &__preview-wpp {
         width: 100%;
@@ -121,4 +139,9 @@
         background-color: #ffffff;
         border-radius: 8px;
     }
+
+    &__input {
+        width: auto;
+    }
 }
+
