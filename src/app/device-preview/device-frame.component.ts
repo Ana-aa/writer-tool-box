@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-device-preview',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './device-frame.component.html',
   styleUrl: './device-frame.component.scss',
 })
-export class DevicePreview {}
+export class DevicePreview {
+  @Input() width: string = '470px';
+}
