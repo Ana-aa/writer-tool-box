@@ -28,6 +28,8 @@ export class EmailPreview {
   @Output() limitChangeHeader = new EventEmitter<number>();
   @Output() limitChangePreHeader = new EventEmitter<number>();
 
+  public readonly warningEmail = 'Preview baseado no Gmail para Android. <br>Geralmente são exibidos apenas 60 caracteres.'
+
   private syncCountsFromEmails(): void {
     const firstEmail = this.emails[0] ?? { nameEnterprise: '', headerText: '', preHeaderText: '' };
     this.charCountName = firstEmail.nameEnterprise.length;
@@ -90,7 +92,7 @@ export class EmailPreview {
     const limitedValue = value.slice(0, this.limitHeader);
     textarea.value = limitedValue;
     this.emails[index].headerText = limitedValue;    
-    this.currentPreHeader = limitedValue;    
+    this.currentHeader = limitedValue;    
     this.charCountHeader = limitedValue.length;
   }
 
@@ -188,7 +190,7 @@ export class EmailPreview {
       return 'warning';
     } else {
       return 'ok';
-    }
+    } 
   }
 
   @ViewChild('resultCount') resultCount!: ElementRef;
@@ -218,14 +220,7 @@ export class EmailPreview {
       : text;
   }
 
-  shouldShowPreviewTip(): boolean {
-    return this.currentPreHeader.length >= 60;
-  }
-
-  complementText(): string {
-    if(this.currentPreHeader.length >= 60) {
-      return 'Preview baseado no Gmail para Android. <br>Geralmente são exibidos apenas 60 caracteres.';
-    }
-    return '';
+  shouldShowPreviewTip(index: number): boolean {
+    return this.emails[index].preHeaderText.length >= 60;
   }
 }

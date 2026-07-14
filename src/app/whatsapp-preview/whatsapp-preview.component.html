@@ -1,36 +1,106 @@
 <div class="wpp-container">
     <div class="wpp-container__textarea">
-        <p>em construção!</p>
+        <h2>Preview de Whatsapp</h2>
 
-        <div class="wpp-container__inputTitle">
-            <label for="titulo">
-                Título
-            </label>
-            <textarea 
-                class="textarea" 
-                placeholder="Digite o título"
-            ></textarea>
-        </div>
+        @for (whatsapp of whatsapp; track $index) {
+            <div class="wpp-container__inputTitle">
+                <label for="titulo">
+                    Título
+                    @if ($index > 0) {
+                        {{ $index + 1}}
+                    }
+                </label>
 
-        <div class="wpp-container__inputSubtitle">
-            <label for="subtitulo">
-                Subtítulo
-            </label>
-            <textarea 
-                class="textarea" 
-                placeholder="Digite o subtítulo"
-            ></textarea>
-        </div>
+                <textarea 
+                    class="textarea" 
+                    placeholder="Digite o título"
+                    (input)="onTitleChange($event, $index)"
+                    [(ngModel)]="whatsapp.title"
+                ></textarea>
 
-        <div class="wpp-container__inputMessage">
-            <label for="message">
-                Mensagem
-            </label>
-            <textarea 
-                class="textarea" 
-                placeholder="Digite a mensagem"
-            ></textarea>
-        </div>
+                <span
+                    id="result-char-title"
+                    class="result-char-title__result-count result-count"
+                    [ngClass]="'result-char-title__result-count--' + getStatusTitle()"
+                >
+
+                    {{ charCountTitle }} / {{ limitTitle }}
+                </span>
+            </div>
+
+            <div class="wpp-container__inputDescription">
+                <label for="description">
+                    Descrição
+                    @if ($index > 0) {
+                        {{ $index + 1}}
+                    }
+                </label>
+
+                <textarea 
+                    class="textarea" 
+                    placeholder="Digite a descrição"
+                    (input)="onDescriptionChange($event, $index)"
+                    [(ngModel)]="whatsapp.description"
+                ></textarea>
+
+                <span
+                    id="result-char-description"
+                    class="result-char-description__result-count"
+                    [ngClass]="'result-char-description__result-count--' + getStatusDescription()"
+                >
+
+                    {{ charCountDescription }} / {{ limitDescription }}
+                </span>
+            </div>
+        
+            <div class="wpp-container__inputMessage">
+                <label for="message">
+                    Mensagem
+                    @if ($index > 0) {
+                        {{ $index + 1}}
+                    }
+                </label>
+                <textarea 
+                    class="textarea" 
+                    placeholder="Digite a mensagem"
+                    (input)="onMessageChange($event, $index)"
+                    [(ngModel)]="whatsapp.message"
+                ></textarea>
+
+                <span
+                    id="result-char-message"
+                    class="result-char-message__result-count"
+                    [ngClass]="'result-char-message__result-count--' + getStatusMessage()"
+                >
+
+                    {{ charCountMessage }} / {{ limitMessage }}
+                </span>
+
+                @if (shouldShowWarningMessage($index)) {
+                    <div class="preview-tip">
+                        <span class="preview-tip__text">
+                            <img 
+                                src="../../assets/atencao.png" 
+                                alt="Ícone de atenção" 
+                                class="preview-tip__icon"
+                            >
+                            <p 
+                                class="preview-tip__paragrafh"
+                                [innerHTML]="whatsappWarning"
+                            >
+                            </p>
+                        </span>
+                    </div>
+                }  
+            </div>
+        }
+
+        <button 
+            class="wpp-container__button btn-primary-purple"
+            (click)="clearWpp()"
+        >
+                Limpar
+        </button>
     </div>        
 
     <app-device-preview [width]="'630px'">
@@ -43,14 +113,20 @@
                         <div class="wpp-container__elements">
                             <img src="../../assets/img/back.png" alt="Seta para voltar" class="wpp-container__icon-back">
                         
-                            <div class="wpp-container__logo-icon"></div>
+                            <div class="wpp-container__logo-icon">
+                                <img 
+                                    src="../../assets/img/logo-writer-toolbox.svg" 
+                                    alt="Logo Writer Tool Box"
+                                    class="wpp-container__logo-tool"
+                                >
+                            </div>
 
                             <div class="wpp-container__name">
                                 Writer Tool Box &#x2705;
                             </div>
 
                             <div class="wpp-container__settings">
-                                ...
+                                . . .
                             </div>
                         </div>
                     </div>
@@ -59,29 +135,47 @@
                 <div class="wpp-container__date">
                     <div class="wpp-container__date-text">Hoje</div>
                 </div>
-                <div class="wpp-container__message-wpp">
-                    <div class="wpp-container__message">
-                        <div class="wpp-container__img-wpp">
-                            <img src="../../assets/img/kt-wpp.png" alt="Exemplo de imagem do Whatsapp">
-                        </div>
-                        <div class="wpp-container__message-text">
-                            <span class="wpp-container__title-message-wpp">Título da mensagem</span><br>
-                            <span class="wpp-container__subtitle-message-wpp">Subtítulo da mensagem</span><br>
-                            <span class="wpp-container__message">Mensagem do whatsapp</span>
+
+                @for (whatsapp of whatsapp; track $index) {
+                    <div class="wpp-container__message-wpp">
+                        <div class="wpp-container__message">
+                            <div class="wpp-container__img-wpp">
+                                <img src="../../assets/img/kt-wpp.png" alt="Exemplo de imagem de marketing do Whatsapp">
+                            </div>
+                            <div class="wpp-container__message-text">
+                                <span class="wpp-container__title-message-wpp">
+                                    {{ whatsapp.title || 'Teste do seu título' }}
+                                </span>
+                                
+                                <span class="wpp-container__description-message-wpp">
+                                    {{ whatsapp.description || 'Teste da sua descrição' }}
+                                </span>
+
+                                <span class="wpp-container__message-message-wpp">
+                                    {{ getPreviewText(whatsapp.message) || 'Teste da sua mensagem (escreva até 350 caracteres para aparecer completa)' }}
+                                    
+                                    @if (shouldShowReadMore(whatsapp.message)) {
+                                        <span
+                                            class="wpp-container__message-see-more"
+                                        >
+                                            Ler mais
+                                        </span>
+                                    }
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="wpp-container__botoes">
-                    <span class="wpp-container__btn-primary">
-                        Saiba mais!
-                    </span>
+                    <div class="wpp-container__botoes">
+                        <span class="wpp-container__btn-primary">
+                            Saiba mais!
+                        </span>
 
-                    <span class="wpp-container__btn-outline">
-                        Agora não!
-                    </span>
-                </div>
-                
+                        <span class="wpp-container__btn-outline">
+                            Agora não!
+                        </span>
+                    </div>
+                }
             </div>
         </ng-content>
     </app-device-preview>
