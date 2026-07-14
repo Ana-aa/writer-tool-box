@@ -50,7 +50,7 @@
                             class="result-char-header__result-count"
                             [ngClass]="'result-char-header__result-count--' + getStatusPreHeader()"
                         >
-                            {{ charCountPreHeader }} / {{ limitPreHeader }}
+                            {{ charCountHeader }} / {{ limitHeader }}
 
                         </span>
                     </div>
@@ -78,18 +78,18 @@
 
                         </span>
 
-                        @if (shouldShowPreviewTip()) {
+                        @if (shouldShowPreviewTip($index)) {
                             <div class="preview-tip">
                                 <span class="preview-tip__text">
                                     <img 
-                                        src="../../assets/atencao.png" alt="Ícone de atenção" 
+                                        src="../../assets/atencao.png" 
+                                        alt="Ícone de atenção" 
                                         class="preview-tip__icon"
                                     >
                                     <p 
                                         class="preview-tip__paragrafh"
-                                        [innerHTML]="complementText()"
+                                        [innerHTML]="warningEmail"
                                     >
-                                        {{ complementText() }}
                                     </p>
                                 </span>
                             </div>
@@ -148,7 +148,7 @@
                             <div class="texts-email">
                                 <div class="text-name-email">
                                     <span class="text-name-device">
-                                        {{ email.nameEnterprise }}
+                                        {{ email.nameEnterprise || 'Writer Tool Box' }}
                                     </span>
                                 </div>
                                 <span class="data">10:41</span>
@@ -156,13 +156,13 @@
                                 <div class="text-header-preheader">
                                     <div class="text-header-email">
                                         <span class="text-header-device">
-                                            {{ truncateText(email.headerText, 60) }}
+                                            {{ truncateText(email.headerText, 45) || 'Seu próximo texto começa aqui ✨' }}
                                         </span>
                                     </div>
 
                                     <div class="text-pre-header-email">
                                         <span class="text-pre-header-device">
-                                            {{ truncateText(email.preHeaderText, 60) }} 
+                                            {{ truncateText(email.preHeaderText, 60) || 'Teste assuntos, pré-headers e descubra como seu conteúdo pode aparecer antes mesmo da abertura do e-mail. ' }} 
                                         </span>
                                     </div>
                                 </div>
