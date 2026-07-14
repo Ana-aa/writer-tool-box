@@ -3,56 +3,6 @@
         <h2>Preview de Whatsapp</h2>
 
         @for (whatsapp of whatsapp; track $index) {
-            <div class="wpp-container__inputTitle">
-                <label for="titulo">
-                    Título
-                    @if ($index > 0) {
-                        {{ $index + 1}}
-                    }
-                </label>
-
-                <textarea 
-                    class="textarea" 
-                    placeholder="Digite o título"
-                    (input)="onTitleChange($event, $index)"
-                    [(ngModel)]="whatsapp.title"
-                ></textarea>
-
-                <span
-                    id="result-char-title"
-                    class="result-char-title__result-count result-count"
-                    [ngClass]="'result-char-title__result-count--' + getStatusTitle()"
-                >
-
-                    {{ charCountTitle }} / {{ limitTitle }}
-                </span>
-            </div>
-
-            <div class="wpp-container__inputDescription">
-                <label for="description">
-                    Descrição
-                    @if ($index > 0) {
-                        {{ $index + 1}}
-                    }
-                </label>
-
-                <textarea 
-                    class="textarea" 
-                    placeholder="Digite a descrição"
-                    (input)="onDescriptionChange($event, $index)"
-                    [(ngModel)]="whatsapp.description"
-                ></textarea>
-
-                <span
-                    id="result-char-description"
-                    class="result-char-description__result-count"
-                    [ngClass]="'result-char-description__result-count--' + getStatusDescription()"
-                >
-
-                    {{ charCountDescription }} / {{ limitDescription }}
-                </span>
-            </div>
-        
             <div class="wpp-container__inputMessage">
                 <label for="message">
                     Mensagem
@@ -93,6 +43,56 @@
                     </div>
                 }  
             </div>
+
+        <!--
+            <div class="buttons">
+                <label for="button">
+                    Botão 1
+                    @if ($index > 0) {
+                        {{ $index + 1}}
+                    }
+                </label>
+                <textarea 
+                    class="textarea" 
+                    placeholder="Digite o botão 1"
+                    (input)="onButtonChange($event, $index)"
+                    [(ngModel)]="whatsapp.button"
+                ></textarea>
+
+                ************* VAI FICAR? ****************
+                <span
+                    id="result-char-message"
+                    class="result-char-message__result-count"
+                >
+
+                    {{ charCountMessage }}
+                </span>
+                ***************************************************
+
+                <label for="button">
+                    Botão 2
+                    @if ($index > 0) {
+                        {{ $index + 1}}
+                    }
+                </label>
+                <textarea 
+                    class="textarea" 
+                    placeholder="Digite o botão 2"
+                    (input)="onButtonChange($event, $index)"
+                    [(ngModel)]="whatsapp.button"
+                ></textarea>
+
+                ************* VAI FICAR? ****************
+                <span
+                    id="result-char-button"
+                    class="result-char-button-count"
+                >
+
+                    {{ charCountbutton }}
+                </span>
+                *******************************************
+            </div>
+        -->
         }
 
         <button 
@@ -138,42 +138,28 @@
 
                 @for (whatsapp of whatsapp; track $index) {
                     <div class="wpp-container__message-wpp">
-                        <div class="wpp-container__message">
-                            <div class="wpp-container__img-wpp">
-                                <img src="../../assets/img/kt-wpp.png" alt="Exemplo de imagem de marketing do Whatsapp">
-                            </div>
-                            <div class="wpp-container__message-text">
-                                <span class="wpp-container__title-message-wpp">
-                                    {{ whatsapp.title || 'Teste do seu título' }}
+                        
+                        <span class="wpp-container__message-text-wpp">
+                            {{ getPreviewText(whatsapp.message) || 'Teste da sua mensagem (escreva até 350 caracteres para aparecer completa)' }}
+                            
+                            @if (shouldShowReadMore(whatsapp.message)) {
+                                <span
+                                    class="wpp-container__message-see-more"
+                                >
+                                    Ler mais
                                 </span>
-                                
-                                <span class="wpp-container__description-message-wpp">
-                                    {{ whatsapp.description || 'Teste da sua descrição' }}
-                                </span>
+                            }
+                        </span>
 
-                                <span class="wpp-container__message-message-wpp">
-                                    {{ getPreviewText(whatsapp.message) || 'Teste da sua mensagem (escreva até 350 caracteres para aparecer completa)' }}
-                                    
-                                    @if (shouldShowReadMore(whatsapp.message)) {
-                                        <span
-                                            class="wpp-container__message-see-more"
-                                        >
-                                            Ler mais
-                                        </span>
-                                    }
-                                </span>
-                            </div>
+                        <div class="wpp-container__botoes">
+                            <span class="wpp-container__btn-primary">
+                                Saiba mais
+                            </span>
+
+                            <span class="wpp-container__btn-outline">
+                                Agora não
+                            </span>
                         </div>
-                    </div>
-
-                    <div class="wpp-container__botoes">
-                        <span class="wpp-container__btn-primary">
-                            Saiba mais!
-                        </span>
-
-                        <span class="wpp-container__btn-outline">
-                            Agora não!
-                        </span>
                     </div>
                 }
             </div>

@@ -32,8 +32,6 @@ label {
         margin-bottom: 0.8rem;
     }
 
-    &__inputTitle,
-    &__inputDescription,
     &__inputMessage {
         display: flex;
         flex-direction: column;
@@ -84,16 +82,15 @@ label {
 
     &__name {
         font-size: 1rem;
-        color: #333333;
         margin: 0 40px 0 10px;
-        color: white;
+        color: #ffffff;
     }
 
     &__settings {
         rotate: 90deg;
         font-weight: 600;
         margin-left: 240px;
-        color: white;
+        color: #ffffff;
     }
 
     &__background-wpp {
@@ -125,48 +122,31 @@ label {
     }
 
     &__message-wpp {
-        width: 90%;
-        margin: 0 0 4px 10px;
+        width: 312px;
+        height: auto;
+        margin: 10px 0 4px 10px;
+        padding: 10px 10px 0;
         background-color: #ffffff;
-        border-radius: 8px;
-    }
-
-    &__message-text {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        padding: 10px;
-        gap: 5px;
-    }
-
-    &__img-wpp {
-        margin: 10px 10px 0;
-
-        img {
-            width: 180px;
-            height: 110px;
-            margin-top: 10px;
-            border-radius: 8px;
-        }
-    }
-
-    &__title-message-wpp {
-        font-weight: 600;
+        border-radius: 0 8px 8px;
     }
 
     &__botoes {
         display: flex;
-        flex-direction: row;
-        gap: 5px;
-        margin-left: 10px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 15px;
     }
 
     &__btn-primary, 
     &__btn-outline {
-        padding: 8px 20px;
+        width: 300px;
+        padding: 10px;
         color: #1DAA61;
         background-color: #ffffff;
-        border-radius: 8px;
+        border-top: 1px solid rgb(185, 185, 185);
+        text-align: center;
     }
 
     &__message-see-more {
@@ -174,8 +154,6 @@ label {
     }
 }
 
-.result-char-title__result-count,
-.result-char-description__result-count,
 .result-char-message__result-count {
     display: inline-block;
     width: fit-content;
