@@ -62,6 +62,7 @@
                     <span
                         id="result-char-button"
                         class="result-char-message__result-count"
+                        [ngClass]="'result-char-message__result-count--' + getStatusButton()"
                     >
 
                         {{ charCountButton + ' / 25' }}
@@ -86,6 +87,7 @@
                     <span
                         id="result-char-buttonTwo"
                         class="result-char-message__result-count"
+                        [ngClass]="'result-char-message__result-count--' + getStatusButtonTwo()"
                     >
 
                         {{ charCountButtonTwo + ' / 25' }}

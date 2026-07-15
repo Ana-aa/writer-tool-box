@@ -135,6 +135,26 @@ export class WhatsappPreviewComponent {
     }
   }
 
+  getStatusButton(): string {
+    if (this.charCountButton >= this.limitButton) {
+      return 'danger';
+    } else if (this.charCountButton >= this.limitButton * 0.8) {
+      return 'warning';
+    } else {
+      return 'ok;'
+    }
+  }
+
+  getStatusButtonTwo(): string {
+    if (this.charCountButtonTwo >= this.limitButtonTwo) {
+      return 'danger';
+    } else if (this.charCountButtonTwo >= this.limitButtonTwo * 0.8) {
+      return 'warning';
+    } else {
+      return 'ok;'
+    }
+  }
+
   @ViewChild('resultCount') resultCount!: ElementRef;
 
   onTextChange(event: any) {
