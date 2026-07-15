@@ -15,23 +15,32 @@ import { FormsModule } from '@angular/forms';
 })
 export class WhatsappPreviewComponent {
   @Input() limitMessage = 1500;
+  @Input() limitButton = 25;
+  @Input() limitButtonTwo = 25;
 
   charCount = 0;
   charCountMessage = 0;
+  charCountButton = 0;
+  charCountButtonTwo = 0;
 
   @Output() limitChangeMessage = new EventEmitter<number>();
+  @Output() limitChangeButton = new EventEmitter<number>();
+  @Output() limitChangeButtonTwo = new EventEmitter<number>();
 
   public readonly whatsappWarning = 'O WhatsApp pode exibir "Ver mais" em mensagens longas.<br> Este preview utiliza 350 caracteres como referência.'
-
-
+  
   private syncCountsFromWpp(): void {
-    const firstEmail = this.whatsapp[0] ?? { message: ''};
-    this.charCountMessage = firstEmail.message.length;
+    const firstWpp = this.whatsapp[0] ?? { message: '', button: '', buttonTwo: '' };
+    this.charCountMessage = firstWpp.message.length;
+    this.charCountButton = firstWpp.button.length;
+    this.charCountButtonTwo = firstWpp.buttonTwo.length;
   }
 
   private applyLimitsToWpp(): void {
     this.whatsapp = this.whatsapp.map((whatsapp) => ({
       message: whatsapp.message.slice(0, this.limitMessage),
+      button: whatsapp.button.slice(0, this.limitButton),
+      buttonTwo: whatsapp.buttonTwo.slice(0, this.limitButtonTwo),
     }));
 
     this.syncCountsFromWpp();
@@ -41,16 +50,29 @@ export class WhatsappPreviewComponent {
     this.limitChangeMessage.emit(value);
   }
 
+  onInputButtonChange(event: any) {
+    const value = Number(event.target.value);
+    this.limitChangeButton.emit(value);
+  }
+
+  onInputButtonTwoChange(event: any) {
+    const value = Number(event.target.value);
+    this.limitChangeButtonTwo.emit(value);
+  }
+
   @ViewChild('charPreview') charPreview!: ElementRef;
 
   currentMessage = '';
+  currentButton = '';
+  currentButtonTwo = '';
 
   whatsapp = [
     {
-      message: ''
+      message: '',
+      button: '',
+      buttonTwo: ''
     }
   ]
-
 
   onMessageChange(event: Event, index: number) {
     const textarea = event.target as HTMLTextAreaElement;
@@ -61,6 +83,24 @@ export class WhatsappPreviewComponent {
     this.charCountMessage = limitedValue.length;
   }
 
+  onButtonChange(event: Event, index: number) {
+    const textarea = event.target as HTMLTextAreaElement;
+    const value = textarea.value;
+    const limitedValue = value.slice(0, this.limitButton);
+    textarea.value = limitedValue;
+    this.whatsapp[index].button = limitedValue;
+    this.charCountButton = limitedValue.length;
+  }
+
+  onButtonTwoChange(event: Event, index: number) {
+    const textarea = event.target as HTMLTextAreaElement;
+    const value = textarea.value;
+    const limitedValue = value.slice(0, this.limitButtonTwo);
+    textarea.value = limitedValue;
+    this.whatsapp[index].buttonTwo = limitedValue;
+    this.charCountButtonTwo = limitedValue.length;
+  }
+
   onMessageLimitChange(value: number) {
     this.limitMessage = value;
     this.applyLimitsToWpp();
@@ -69,13 +109,20 @@ export class WhatsappPreviewComponent {
   clearWpp() {
     this.whatsapp = [
       {
-        message: ''
+        message: '',
+        button: '',
+        buttonTwo: ''
       }
     ];
 
     this.currentMessage = '';
-    
     this.charCountMessage = 0;
+
+    this.currentButton = '';
+    this.charCountButton = 0;
+
+    this.currentButtonTwo = '';
+    this.charCountButtonTwo = 0;
   }
 
   getStatusMessage(): string {
@@ -111,4 +158,4 @@ export class WhatsappPreviewComponent {
   shouldShowWarningMessage(index: number): boolean {
     return this.whatsapp[index].message.length >= 350;
   }
-} 
+}

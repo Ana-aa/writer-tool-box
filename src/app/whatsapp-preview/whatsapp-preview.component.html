@@ -44,55 +44,55 @@
                 }  
             </div>
 
-        <!--
-            <div class="buttons">
-                <label for="button">
-                    Botão 1
-                    @if ($index > 0) {
-                        {{ $index + 1}}
-                    }
-                </label>
-                <textarea 
-                    class="textarea" 
-                    placeholder="Digite o botão 1"
-                    (input)="onButtonChange($event, $index)"
-                    [(ngModel)]="whatsapp.button"
-                ></textarea>
+            <div class="wpp-container__buttons">
+                <div class="wpp-container__button">
+                    <label for="button">
+                        1º botão
+                        @if ($index > 0) {
+                            {{ $index + 1}}
+                        }
+                    </label>
+                    <textarea 
+                        class="textarea"
+                        placeholder="Digite o 1º botão"
+                        (input)="onButtonChange($event, $index)"
+                        [(ngModel)]="whatsapp.button"
+                    ></textarea>
 
-                ************* VAI FICAR? ****************
-                <span
-                    id="result-char-message"
-                    class="result-char-message__result-count"
-                >
+                    <span
+                        id="result-char-button"
+                        class="result-char-message__result-count"
+                    >
 
-                    {{ charCountMessage }}
-                </span>
-                ***************************************************
+                        {{ charCountButton + ' / 25' }}
+                    </span>
+                </div>
 
-                <label for="button">
-                    Botão 2
-                    @if ($index > 0) {
-                        {{ $index + 1}}
-                    }
-                </label>
-                <textarea 
-                    class="textarea" 
-                    placeholder="Digite o botão 2"
-                    (input)="onButtonChange($event, $index)"
-                    [(ngModel)]="whatsapp.button"
-                ></textarea>
+                <div class="wpp-container__buttonTwo">
 
-                ************* VAI FICAR? ****************
-                <span
-                    id="result-char-button"
-                    class="result-char-button-count"
-                >
+                    <label for="button">
+                        2º botão
+                        @if ($index > 0) {
+                            {{ $index + 1}}
+                        }
+                    </label>
+                    <textarea 
+                        class="textarea" 
+                        placeholder="Digite o 2º botão"
+                        (input)="onButtonTwoChange($event, $index)"
+                        [(ngModel)]="whatsapp.buttonTwo"
+                    ></textarea>
 
-                    {{ charCountbutton }}
-                </span>
-                *******************************************
+                    <span
+                        id="result-char-buttonTwo"
+                        class="result-char-message__result-count"
+                    >
+
+                        {{ charCountButtonTwo + ' / 25' }}
+                    </span>
+                </div>
             </div>
-        -->
+        
         }
 
         <button 
@@ -153,11 +153,11 @@
 
                         <div class="wpp-container__botoes">
                             <span class="wpp-container__btn-primary">
-                                Saiba mais
+                                {{ getPreviewText(whatsapp.button) || 'Saiba mais' }} 
                             </span>
 
                             <span class="wpp-container__btn-outline">
-                                Agora não
+                                {{ getPreviewText(whatsapp.buttonTwo) || 'Agora não' }}
                             </span>
                         </div>
                     </div>
