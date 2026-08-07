@@ -1,35 +1,118 @@
 <div class="push-preview-container">
     <h2>Preview de push</h2>
     <div class="push-preview-container__input-device">
-        <div class="push-preview-container__input-text">
-            <div class="push-preview-container__input-header">
-                <label for="titulo">Header</label>
-                <textarea 
-                    type="text" 
-                    class="textarea"
-                    placeholder="Digite o header"
-                ></textarea>
-            </div>
+        
+        @for (push of push; track $index) {
+            <div class="push-preview-container__input-text">
+                <div class="push-preview-container__input-title">
+                    <label for="titulo">Título</label>
+                    <textarea 
+                        type="text" 
+                        class="textarea"
+                        placeholder="Digite o título"
+                        [ngModel]="push.title"
+                        (ngModelChange)="onTitleChange($event, $index)"
+                    ></textarea>
 
-            <div class="push-preview-container__input-pre-header">
-                <label for="pre-header">Pré Header</label>
-                <textarea
-                    type="text" 
-                    class="textarea"
-                    placeholder="Digite o pré-header"
-                ></textarea>
+                    <span
+                        id="result-char-message"
+                        class="result-char-message__result-count"
+                        [ngClass]="'result-char-message__result-count--' + getStatusTitle()"
+                    >
+
+                        {{ charCountTitle }} / {{ limitTitleClose }}
+                    </span>
+                </div>
+
+                <div class="push-preview-container__input-text-body">
+                    <label for="pre-header">Texto</label>
+                    <textarea
+                        type="text" 
+                        class="textarea"
+                        placeholder="Digite o texto"
+                        [ngModel]="push.body"
+                        (ngModelChange)="onBodyChange($event, $index)"
+                    ></textarea>
+
+                    <span
+                        id="result-char-message"
+                        class="result-char-message__result-count"
+                        [ngClass]="'result-char-message__result-count--' + getStatusBody()"
+                    >
+
+                        {{ charCountBody }} / {{ limitBodyClose }}
+                    </span>
+                </div>
             </div>
-        </div>
+        }
+    
+        <!-- Conteúdo do push -->            
         <app-device-preview>
-            <div class="text-device">
-                <span class="text-header-device">
-                Teste do Header no Device
-                </span>
             
-                <span class="text-header-device">
-                    Teste do Pré Header no Device
-                </span>
-            </div>
-        </app-device-preview>
+                @for (push of push; track $index) {
+                    <div class="push-container">
+                        <div 
+                            class="push-container__container-closed"
+                            [ngClass]="'push-container__container-closed--' + getRotateArrow()"
+                        >
+                            <div class="push-container__closed-top">
+                                <div class="push-container__title-icon">
+                                    <div class="push-container__logo">
+                                        <img
+                                            class="push-container__element-icon"
+                                            src="../../assets/img/cursor-wtb.png" 
+                                            alt="Ícone cursor Writer Tool Box"
+                                        >
+                                    </div>
+                                
+                                    <div class="push-container__name">
+                                        Writer toolbox
+                                    </div>
+
+                                    <div class="push-container__now-device">
+                                        <span class="push-container__now">
+                                            • now
+                                        </span>
+                                    </div>
+
+                                    <div id="arrow" class="push-container__arrow">
+                                        <img 
+                                            src="../../assets/img/down-arrow.png" 
+                                            alt="Ícone de seta"
+                                            class="push-container__arrow-icon"
+                                            (click)="alternStateExpanded()"
+                                            [ngClass]="'push-container__arrow-icon--' + getRotateArrow()"
+                                        >
+                                    </div>                                    
+                                </div>
+                            </div>
+
+                            <div class="push-container__title-device">
+                                <span class="push-container__title">
+                                    {{ getPreviewText(push.title) ||'Teste do título no device' }}
+                                </span>
+                            </div>
+
+                            <div class="push-container__body">
+                                <div class="push-container__text-device">
+                                    <span class="push-container__text">
+                                        {{ getPreviewBody(push.body) ||'Teste do corpo no Device' }} 
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        @if (isExpanded) {
+                            <div class="push-container__container-expanded">
+                                <img 
+                                    src="/assets/img/kt-wpp.png" 
+                                    alt="Exemplo de imagem para push" 
+                                    class="push-container__image"
+                                >
+                            </div>
+                        }
+                    </div>
+                }
+            </app-device-preview>
     </div>    
 </div>
