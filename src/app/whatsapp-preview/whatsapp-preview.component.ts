@@ -27,7 +27,7 @@ export class WhatsappPreviewComponent {
   @Output() limitChangeButton = new EventEmitter<number>();
   @Output() limitChangeButtonTwo = new EventEmitter<number>();
 
-  public readonly whatsappWarning = 'O WhatsApp pode exibir "Ver mais" em mensagens longas.<br> Este preview utiliza 350 caracteres como referência.'
+  public readonly whatsappWarning = 'O WhatsApp pode exibir "Ler mais" em mensagens longas.<br> Este preview utiliza 350 caracteres como referência.'
   
   private syncCountsFromWpp(): void {
     const firstWpp = this.whatsapp[0] ?? { message: '', button: '', buttonTwo: '' };

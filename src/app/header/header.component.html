@@ -1,37 +1,35 @@
-<div class="header-container">
-  <header class="header">
-    <div class="img-logo">
-      <img 
-          class="logo"
-          src="../../assets/img/logo-writer-toolbox.svg"
-          alt="Logo do site"
-      >
-    </div>
-    <nav class="navigation">
-      <ul class="navigation-list">
+<header class="header">
+  <div class="header-container">
+    <img 
+      class="header-container__logo"
+      src="../../assets/img/logo-writer-toolbox.svg"
+      alt="Logo do writer toolbox"
+    >
+    
+    <nav class="header-container__navigation">
+      <ul class="header-container__navigation-list">
 
-        <li class="navigation-list__item">
-          <a class="btn-header" (click)="goToCountCaracter()">Contador de caracteres</a>
+        <li class="header-container__list-item">
+          <a class="header-container__btn-header" (click)="goToCountCaracter()">Contador de caracteres</a>
         </li>
 
-        <li class="navigation-list__item">
-          <a class="btn-header" (click)="goToPushPreview()">Preview de push</a>
+        <li class="header-container__list-item">
+          <a class="header-container__btn-header" (click)="goToPushPreview()">Preview de push</a>
         </li>
 
-        <li class="navigation-list__item">
-          <a class="btn-header" (click)="goToEmailPreview()">Preview de e-mail</a>
+        <li class="header-container__list-item">
+          <a class="header-container__btn-header" (click)="goToEmailPreview()">Preview de e-mail</a>
         </li>
 
-        <li class="navigation-list__item">
-          <a class="btn-header" (click)="goToWppPreview()">Preview de whatsapp</a>
+        <li class="header-container__list-item">
+          <a class="header-container__btn-header" (click)="goToWppPreview()">Preview de whatsapp</a>
         </li>
 
-        <li class="navigation-list__item">
-          <a class="btn-header" (click)="goToConfigationCount()">Limites configuráveis</a>
+        <!--<li class="header-container__list-item">
+          <a class="header-container__btn-header" (click)="goToConfigationCount()">Limites configuráveis</a>
         </li>
-
-
+      -->
       </ul>
     </nav>
-  </header>
-</div>
+  </div>
+</header>
