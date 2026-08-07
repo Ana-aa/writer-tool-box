@@ -19,4 +19,16 @@ describe('PushPreview', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render the body input value in the preview', () => {
+    const textareas = fixture.nativeElement.querySelectorAll('textarea');
+    const bodyTextarea = textareas[1] as HTMLTextAreaElement;
+
+    bodyTextarea.value = 'Mensagem de teste do body';
+    bodyTextarea.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    const previewText = fixture.nativeElement.querySelector('.push-container__text')?.textContent?.trim();
+    expect(previewText).toContain('Mensagem de teste do body');
+  });
 });

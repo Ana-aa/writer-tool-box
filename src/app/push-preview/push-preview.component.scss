@@ -1,6 +1,16 @@
 @use '../../styles/variables' as *;
 @use '../../styles/textarea' as *;
 
+:host ::ng-deep .device-content {
+    width: 630px !important;
+    display: flex;
+}
+
+h1 {
+    font-size: 20px;
+    padding: 20px;
+}
+
 .push-preview-container {
     display: flex;
     flex-direction: column;
@@ -9,7 +19,6 @@
     width: auto;
     padding-left: 48px;
     padding: 3rem;
-
     
     h2 {
         font-size: 1.5rem;
@@ -22,6 +31,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+        
     }
 
     &__input-text{
@@ -34,43 +44,180 @@
         margin-right: 40px;
     }
 
-    label {
-        font-size: 14px;
-        font-weight: 500;
-        color: #9061F9;
-    }
-
-    &__input-header, &__input-pre-header {
+    &__input-title, &__input-text-body {
         display: flex;
         flex-direction: column;
         gap: 5px;
         margin-bottom: 20px;
     }
 
-
-    input {
-        width: auto;
-        border-radius: 8px;
-        border: 1px solid #A78BFA;
-        padding: 5px;
-
-        &:focus {
-            border-color: #220455;
-            outline: none;
-        }
-
-        &:focus-visible {
-            border-color: #7C3AED;
-            outline: none;
-        }
+    .textarea {
+        width: 400px;
     }
 }
 
-.text-device {
+.push-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 630px;
+    min-height: 100px;
+    height: auto;
+    border-radius: 8px;
+    background: #ece8fa;
+    overflow: hidden;
+
+    &--open {
+        min-height: 100px;
+    }
+
+    &__container-closed {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: inherit;
+        border-radius: 8px 8px 0 0;
+    }
+
+    &__container-expanded {
+        width: 100%;
+        background: inherit;
+        border-radius: 0 0 8px 8px;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 0 0 8px 8px;
+    }
+
+    &__closed-top {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__title-icon {
+        width: 60px;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+    }
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+        width: 60px;
+        height: 100%;
+        padding: 20px 20px 0;
+    }
+
+    &__element-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+
+    }  
+
+    &__title-device {
+        padding: 25px 5px 5px;
+        width: 750px;
+        height: auto;
+    }
+
+    &__arrow {
+        margin: 30px;
+    }
+
+    &__arrow-icon {
+        transition: 1.0s;
+        &--open {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__now-device,
+    &__name {
+        margin-top: 25px;
+        width: 100%;
+    }
+
+    &__now {
+        font-size: 10px;
+    }
+
+    &__body,
+    &__title {
+        display: flex;
+        margin: 0 0 10px 65px;
+    }
+}
+
+.result-char-message__result-count {
+    display: inline-block;
+    width: fit-content;
+    height: auto;
+    font-size: 0.7rem;
+    color: $light-primary;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    background-color: $light-purple;
+    margin-top: 8px;
+
+    &--ok {
+        background-color: $light-purple;
+    }
+
+    &--warning {
+        background-color: $light-alert;
+    }
+
+    &--danger {
+        background-color: $light-red-error;
+    }
 }
 
 
+   /* 
+    &__top-elements {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 20px 5px 0;
+    }
+
+    &__elements {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        list-style-type: none;
+    }
+
+    
+
+    &__element-name {
+    }
+
+    &__element-now {
+        margin-right: 0;
+    }
+
+    &__arrow {
+        display: flex;
+        justify-content: flex-end;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &__text-device {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 10px;
+        gap: 15px;
+    }
+    */
