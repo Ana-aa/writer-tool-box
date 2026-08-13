@@ -2,27 +2,29 @@ import { Component, ElementRef, Input, Output, ViewChild, EventEmitter, signal }
 import { DevicePreview } from '../device-preview/device-frame.component';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TextInputComponent } from "../atomic-design/organismos/text-input/text-input.component";
+import { ButtonClearComponent } from "../atomic-design/atomos/button-clear/button-clear.component";
+import { ConfigurationCountComponent } from "../configuration/configuration-count.component";
 
 @Component({
   selector: 'app-push-preview',
   imports: [
     DevicePreview,
     NgClass,
-    FormsModule
-  ],
+    FormsModule,
+    TextInputComponent,
+    ButtonClearComponent,
+    ConfigurationCountComponent
+],
   templateUrl: './push-preview.component.html',
   styleUrl: './push-preview.component.scss',
 })
 export class PushPreview {
-  @Input() limitTitleClose = 25;
-  @Input() limitTitleExpanded = 54;
-  @Input() limitBodyClose = 30;
-  @Input() limitBodyExpanded = 93;
+  @Input() limitTitle = 50;
+  @Input() limitBody = 100;
 
-  @Output() limitChangeTitleClose = new EventEmitter<number>();
-  @Output() limitChangeTitleExpanded = new EventEmitter<number>();
-  @Output() limitChangeBodyClose = new EventEmitter<number>();
-  @Output() limitChangeBodyExpanded = new EventEmitter<number>();
+  @Output() limitChangeTitle = new EventEmitter<number>();
+  @Output() limitChangeBody = new EventEmitter<number>();
 
   charCount = 0;
   charCountTitle = 0;
@@ -53,82 +55,63 @@ export class PushPreview {
 
   private applyLimitsToPush(): void {
     this.push = this.push.map((push) => ({
-      title: push.title.slice(0, this.limitTitleClose),
-      body: push.body.slice(0, this.limitBodyClose),
+      title: push.title.slice(0, this.limitTitle),
+      body: push.body.slice(0, this.limitBody),
     }));
 
     this.syncCountFromPush();
   }
 
-  onInputChangeTitle(event: any) {
+  // Recebe o evento do input configurável e emite o novo limite para o título
+  onNewLimitChangeTitle(event: any) {
     const value = Number(event.target.value);
-    this.limitChangeTitleClose.emit(value);
+    this.limitChangeTitle.emit(value);
   }
-  
-  onInputChangeBody(event: any) {
+
+  // Recebe o evento do input configurável e emite o novo limite para o corpo
+  onNewLimitChangeBody(event: any) {
     const value = Number(event.target.value);
-    this.limitChangeBodyClose.emit(value);
+    this.limitChangeBody.emit(value);
   }
 
   onTitleChange(value: string | Event, index: number) {
+    // Atualiza título de push e contabiliza caracteres, cortando pelo limite atual
     const inputValue = typeof value === 'string' ? value : (value.target as HTMLTextAreaElement).value;
-    const limitedValue = inputValue.slice(0, this.limitTitleClose);
+    const limitedValue = inputValue.slice(0, this.limitTitle);
 
     this.push[index].title = limitedValue;
     this.charCountTitle = limitedValue.length;
   }
 
   onBodyChange(value: string | Event, index: number) {
+    // Atualiza corpo de push e contabiliza caracteres, cortando pelo limite atual
     const inputValue = typeof value === 'string' ? value : (value.target as HTMLTextAreaElement).value;
-    const limitedValue = inputValue.slice(0, this.limitBodyClose);
+    const limitedValue = inputValue.slice(0, this.limitBody);
 
     this.push[index].body = limitedValue;
     this.charCountBody = limitedValue.length;
   }
 
   onTitleLimitChange(value: number) {
-    this.limitTitleClose = value;
+    // Aplica novo limite ao título e força recorte dos valores atuais
+    this.limitTitle = value;
     this.applyLimitsToPush();
   }
 
   onBodyLimitChange(value: number) {
-    this.limitBodyClose = value;
+    // Aplica novo limite ao corpo e força recorte dos valores atuais
+    this.limitBody = value;
     this.applyLimitsToPush();
   }
 
-  clearPush() {
-    this.push = [
-      {
-        title: '',
-        body: ''
-      }
-    ];
+  clearPush(index: number) {
+    this.push[index] = {
+      title: '',
+      body: '' 
+    };
 
-    this.currentTitle = '';
-    this.charCountTitle = 0;
-
-    this.currentBody = '';
-    this.charCountBody = 0;
-  }
-
-  getStatusTitle(): string {
-    if (this.charCountTitle >= this.limitTitleClose) {
-      return 'danger';
-    } else if (this.charCountTitle >= this.limitTitleClose * 0.8) {
-      return 'warning';
-    } else {
-      return 'ok'
-    }
-  }
-
-  getStatusBody(): string {
-    if (this.charCountBody >= this.limitBodyClose) {
-      return 'danger';
-    } else if (this.charCountBody >= this.limitBodyClose * 0.8) {
-      return 'warning';
-    } else {
-      return 'ok'
-    }
+    this.limitTitle = 50;
+    this.limitBody = 100;
   }
 
   @ViewChild('resultCount') resultCount!: ElementRef;
@@ -140,18 +123,17 @@ export class PushPreview {
   getPreviewText(text: string): string {
     if (!text) return '';
 
-    const maxLength = this.isExpanded ? this.limitTitleExpanded : this.limitTitleClose;
-
+    const maxLength = this.isExpanded ? this.limitTitle : this.limitTitle;
     if (text.length > maxLength) {
       return text.slice(0, maxLength) + '...';
     }
     return text;
-  }
+  } 
 
   getPreviewBody(text: string): string {
     if (!text) return '';
 
-    const maxLength = this.isExpanded ? this.limitBodyExpanded : this.limitBodyClose;
+    const maxLength = this.isExpanded ? this.limitBody : this.limitBody;
 
     if (text.length > maxLength) {
       return text.slice(0, maxLength) + '...';
@@ -173,14 +155,6 @@ export class PushPreview {
     } else {
       return 'open'
     }
-  }
-
-  expandedTitlePush(): number {
-    return this.isExpanded ? this.limitTitleExpanded : this.limitTitleClose;
-  }
-
-  expandedBodyPush(): number {
-    return this.isExpanded ? this.limitBodyExpanded : this.limitBodyClose;
   }
 }
 

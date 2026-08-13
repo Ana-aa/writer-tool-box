@@ -3,80 +3,46 @@
     <div class="email-preview-container__input-device">
         <div class="email-preview-container__container">
             @for (email of emails; track $index) {
-                <div 
-                    class="email-preview-container__input-text"
-                >
+                <div class="email-preview-container__input-text" >
                     <div class="email-preview-container__input-header">
-                        <label for="titulo">
-                            Nome empresa
-                            @if ($index > 0) {
-                                {{ $index + 1 }}
-                            }
-                        </label>
-                        
-                        <textarea 
-                            class="textarea"
-                            placeholder="Digite o nome da empresa"
-                            [attr.maxlength]="limitName"
-                            (input)="onNameChange($event,$index)"
-                            [(ngModel)]="email.nameEnterprise"
-                        ></textarea>
-                        <span 
-                            id="result-char-header"
-                            class="result-char-header__result-count"
-                            [ngClass]="'result-char-header__result-count--' + getStatusName()"
-                        >
-                            {{ charCountName }} / {{ limitName }}
+                        <app-text-input 
+                            [label]="'Nome da empresa'"
+                            [placeholder]="'Digite o nome da empresa'"
+                            [maxlength]="30"
+                            [(value)]="email.nameEnterprise"
+                            [limit]="limitName"
+                            (valueChange)="onNameChange($event, $index)"
+                        />
 
-                        </span>
+                        <app-configuration-count (limitChange)="onNameLimitChange($event)" />
                     </div>
 
                     <div class="email-preview-container__input-header">
-                        <label for="titulo">
-                            Assunto
-                            @if ($index > 0) {
-                                {{ $index + 1 }}
-                            }
-                        </label>
-                        <textarea
-                            class="textarea"
-                            placeholder="Digite o header"
-                            [attr.maxlength]="limitHeader"
-                            (input)="onHeaderChange($event,$index)"
-                            [(ngModel)]="email.headerText"
-                        ></textarea>
-                        <span 
-                            id="result-char-header"
-                            class="result-char-header__result-count"
-                            [ngClass]="'result-char-header__result-count--' + getStatusHeader()"
-                        >
-                            {{ charCountHeader }} / {{ limitHeader }}
+                        <app-text-input 
+                            [label]="'Assunto'"
+                            [placeholder]="'Digite o assunto do e-mail'"
+                            [maxlength]="90"
+                            [(value)]="email.headerText"
+                            [limit]="limitHeader"
+                            (valueChange)="onHeaderChange($event, $index)"
+                        />
 
-                        </span>
+                        <app-configuration-count (limitChange)="onHeaderLimitChange($event)" />
                     </div>
 
                     <div class="email-preview-container__input-pre-header">
-                        <label for="pre-header">
-                            Pré-header
-                            @if ($index > 0) {
-                                {{ $index + 1 }}
-                            }
-                        </label>
-                        <textarea
-                            class="textarea"
-                            placeholder="Digite o pré-header"
-                            [attr.maxlength]="limitPreHeader"
-                            (input)="onPreHeaderChange($event,$index)"
-                            [(ngModel)]="email.preHeaderText"
-                        ></textarea>
-                        <span 
-                            id="result-char-header"
-                            class="result-char-header__result-count"
-                            [ngClass]="'result-char-header__result-count--' + getStatusPreHeader()"
-                        >
-                            {{ charCountPreHeader }} / {{ limitPreHeader }}
+                        <app-text-input 
+                            [label]="'Pré-header'"
+                            [placeholder]="'Digite o pré-header do e-mail'"
+                            [maxlength]="100"
+                            [(value)]="email.preHeaderText"
+                            [limit]="limitPreHeader"
+                            (valueChange)="onPreHeaderChange($event, $index)"
+                        />
 
-                        </span>
+                        <app-configuration-count (limitChange)="onPreHeaderLimitChange($event)" />
+
+
 
                         @if (shouldShowPreviewTip($index)) {
                             <div class="preview-tip">
@@ -105,21 +71,18 @@
                     [disabled]="emails.length >= 2"
                 >
                     Adicionar + 
-                </button>
-                <button 
-                    class="btn-primary-purple"
-                    (click)="clearPreview()"
-                >
-                    Limpar 
-                </button>
+                </button> 
+
+                <app-button-clear
+                    [label]="'Limpar'"
+                    (action)="clearEmails()">
+                </app-button-clear>
             </div>
-            
         </div>
         
 
         <app-device-preview [width]="'84%'">
             <div class="email-device">
-
                 <div class="header-email">
                     <div class="menu-hamburguer">
                         <div class="hamburguer"></div>
@@ -136,9 +99,7 @@
 
                 @for (email of emails; track $index) {
                     <div class="container-email">
-
                         <div class="box-email">
-
                             <div class="icon-container">
                                 <span class="icon">
                                     <p class="icon__name-icon">WT</p>
@@ -174,6 +135,7 @@
         </app-device-preview>
     </div>
 </div>
+
 <div class="configuration">
     <h2 class="title-config">Configurações</h2>
     <app-configuration-count (limitChange)="onNameLimitChange($event)">

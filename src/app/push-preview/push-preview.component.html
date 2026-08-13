@@ -5,45 +5,39 @@
         @for (push of push; track $index) {
             <div class="push-preview-container__input-text">
                 <div class="push-preview-container__input-title">
-                    <label for="titulo">Título</label>
-                    <textarea 
-                        type="text" 
-                        class="textarea"
-                        placeholder="Digite o título"
-                        [ngModel]="push.title"
-                        (ngModelChange)="onTitleChange($event, $index)"
-                    ></textarea>
+                    <app-text-input 
+                        [label]="'Título'"
+                        [placeholder]="'Digite o título do push'"
+                        [maxlength]="100"
+                        [(value)]="push.title"
+                        [limit]="limitTitle"
+                        (valueChange)="onTitleChange($event, $index)"
+                    />
 
-                    <span
-                        id="result-char-message"
-                        class="result-char-message__result-count"
-                        [ngClass]="'result-char-message__result-count--' + getStatusTitle()"
-                    >
-
-                        {{ charCountTitle }} / {{ limitTitleClose }}
-                    </span>
+                    <app-configuration-count (limitChange)="onTitleLimitChange($event)" />
+                    
                 </div>
 
-                <div class="push-preview-container__input-text-body">
-                    <label for="pre-header">Texto</label>
-                    <textarea
-                        type="text" 
-                        class="textarea"
-                        placeholder="Digite o texto"
-                        [ngModel]="push.body"
-                        (ngModelChange)="onBodyChange($event, $index)"
-                    ></textarea>
+                <div class="push-preview-container__input-body">
+                    <app-text-input 
+                        [label]="'Corpo do push'"
+                        [placeholder]="'Digite o corpo do push'"
+                        [maxlength]="100"
+                        [(value)]="push.body"
+                        [limit]="limitBody"
+                        (valueChange)="onBodyChange($event, $index)"
+                        
+                    />
 
-                    <span
-                        id="result-char-message"
-                        class="result-char-message__result-count"
-                        [ngClass]="'result-char-message__result-count--' + getStatusBody()"
-                    >
-
-                        {{ charCountBody }} / {{ limitBodyClose }}
-                    </span>
+                    <app-configuration-count (limitChange)="onBodyLimitChange($event)" />
+    
                 </div>
-            </div>
+
+                <app-button-clear
+                    [label]="'Limpar'"
+                    (click)="clearPush($index)"
+                />
+            </div> 
         }
     
         <!-- Conteúdo do push -->            
