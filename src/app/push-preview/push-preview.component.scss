@@ -1,5 +1,4 @@
 @use '../../styles/variables' as *;
-@use '../../styles/textarea' as *;
 
 :host ::ng-deep .device-content {
     width: 630px !important;
@@ -44,10 +43,10 @@ h1 {
         margin-right: 40px;
     }
 
-    &__input-title, &__input-text-body {
+    &__input-title, 
+    &__input-text-body {
         display: flex;
         flex-direction: column;
-        gap: 5px;
         margin-bottom: 20px;
     }
 
@@ -86,9 +85,10 @@ h1 {
 
     &__image {
         display: block;
-        width: 100%;
-        height: auto;
-        border-radius: 0 0 8px 8px;
+        width: 90%;
+        height: 90%;
+        margin: 10px 30px;
+        border-radius: 8px;
     }
 
     &__closed-top {

@@ -1,4 +1,4 @@
-@use 'variables' as *;
+@use '../../../../styles/variables' as *;
 
 label {
     font-size: 14px;
@@ -7,8 +7,8 @@ label {
 }
  
 .textarea {
-    width: 100%;
-    height: 60px;
+    width: 400px;
+    height: 70px;
     border: 1px solid $light-purple;
     border-radius: $border-radius;
     font-size: 14px;
@@ -16,7 +16,7 @@ label {
     color: $light-purple;
     background-color: #f4f2fa;
     padding: 20px;
-    overflow: hidden;
+    
 
     &:focus {
         outline: none;

@@ -1,6 +1,7 @@
 <div class="count-caracter">
     <h1 class="count-caracter__title">Contador de caracteres</h1>
     <textarea 
+        #textArea
         class="textarea"
         id="textarea"
         placeholder="Digite seu texto aqui"
@@ -16,33 +17,24 @@
         </div>
 
         <div class="count-caracter__result-text-container">
-            <p 
-                id="result-text"
-                class="count-caracter__result-text"
+            <span 
+                id="result-count"
+                class="count-caracter__result-count"
+                [ngClass]="'count-caracter__result-count--' + getBarStatus()"
             >
-                Limite:
-                    <span 
-                        id="number-caracteres" 
-                        class="number-caracteres">
-                        {{ characterLimit }}
-                    </span>
-                caracteres
-            </p>
+                {{ charCount }} / {{ characterLimit }}
 
-        <span 
-            id="result-count"
-            class="count-caracter__result-count"
-            [ngClass]="'count-caracter__result-count--' + getBarStatus()"
-        >
-            {{ charCount }} / {{ characterLimit }}
-
-        </span>
-        
-    </div>        
+            </span>
+        </div>        
 
     <app-configuration-count (limitChange)="onLimitChange($event)">
         <span class="config-count__span">chars</span>
     </app-configuration-count>
+
+    <app-button-clear
+        [label]="'Limpar'"
+        (click)="clearCount()"
+    />
 </div>
 
  

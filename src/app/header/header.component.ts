@@ -30,7 +30,5 @@ export class HeaderComponent {
   goToConfigationCount() {
     this.router.navigate(['/configuration-count'])
   }
-
-
 }
  

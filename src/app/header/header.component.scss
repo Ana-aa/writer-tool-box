@@ -1,59 +1,42 @@
 @use '../../styles/variables' as *;
-@use '../../styles/textarea' as *;
 
 .header-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    border-bottom: 1px solid #dbdbdb;
+    flex-direction: row;
+    border-bottom: 1px solid #ece8fa;
+    margin-left: 20px;
 
-    & .header {
-        & .img-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            & img {
-                width: 3rem;
-
-                @media (min-width: 768px) {
-                    width: 10rem;
-                }
-            }
-        }    
+    &__logo {
+        width: 80px;
     }
 
-    & .navigation {
-        & .navigation-list {
-            display: flex;
-            flex-direction: row;
-            align-items: space-between;
-            list-style: none;
-            gap: 5px;
-            padding-top: 10px;
+    &__navigation-list {
+        display: flex;
+        flex-direction: row;
+        align-items: space-between;
+        justify-content: center;
+        list-style: none;
+        gap: 5px;
+        padding-top: 10px;
+    }
 
-            &__item {
-                font-family: 'Inter', sans-serif;
-                font-size: 12px;
-                margin: 15px;
-                cursor: pointer;
+    &__list-item {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        margin: 15px;
+        cursor: pointer;
 
-                & a {
-                    padding: 10px;
-                    background-color: $light-btn-primary;
-                    color: $light-primary;
-                    border: none;
-                    border-radius: $border-radius;
-                    text-decoration: none;
+        a {
+            padding: 10px;
+            color: $light-btn-primary;
+            border: none;
+            border-radius: $border-radius;
+            text-decoration: none;
 
-                    &:hover {
-                        color: #dad9d9;
-                        background-color: $light-btn-primary-hover;
-                    }
-                }
+            &:hover {
+            color: #dad9d9;
+            background-color: $light-btn-primary-hover;
             }
         }
-    }    
+    }
 }

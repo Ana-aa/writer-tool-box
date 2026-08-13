@@ -1,0 +1,7 @@
+<span
+  id="result-char"
+  class="result-char__result-count"
+  [ngClass]="'result-char__result-count--' + getStatus(charCount, limit)"
+>
+  {{ charCount }} / {{ limit }}
+</span>

@@ -4,27 +4,14 @@
 
         @for (whatsapp of whatsapp; track $index) {
             <div class="wpp-container__inputMessage">
-                <label for="message">
-                    Mensagem
-                    @if ($index > 0) {
-                        {{ $index + 1}}
-                    }
-                </label>
-                <textarea 
-                    class="textarea" 
-                    placeholder="Digite a mensagem"
-                    (input)="onMessageChange($event, $index)"
-                    [(ngModel)]="whatsapp.message"
-                ></textarea>
-
-                <span
-                    id="result-char-message"
-                    class="result-char-message__result-count"
-                    [ngClass]="'result-char-message__result-count--' + getStatusMessage()"
-                >
-
-                    {{ charCountMessage }} / {{ limitMessage }}
-                </span>
+                <app-text-input 
+                    [label]="'Mensagem'"
+                    [placeholder]="'Digite a mensagem do Whatsapp'"
+                    [maxlength]="limitMessage"
+                    [(value)]="whatsapp.message"
+                    [limit]="limitMessage"
+                    (valueChange)="onMessageChange($event, $index)"
+                />
 
                 @if (shouldShowWarningMessage($index)) {
                     <div class="preview-tip">
@@ -41,75 +28,50 @@
                             </p>
                         </span>
                     </div>
-                }  
+                } 
+                
+                <app-configuration-count (limitChange)="onMessageLimitChange($event)" />
             </div>
 
             <div class="wpp-container__buttons">
                 <div class="wpp-container__button">
-                    <label for="button">
-                        1º botão
-                        @if ($index > 0) {
-                            {{ $index + 1}}
-                        }
-                    </label>
-                    <textarea 
-                        class="textarea"
-                        placeholder="Digite o 1º botão"
-                        (input)="onButtonChange($event, $index)"
-                        [(ngModel)]="whatsapp.button"
-                    ></textarea>
+                    <app-text-input 
+                        [label]="'1º botão'"
+                        [placeholder]="'Digite o 1º botão'"
+                        [maxlength]="25"
+                        [(value)]="whatsapp.button"
+                        [limit]="limitButton"
+                        (valueChange)="onButtonChange($event, $index)"
+                    />
 
-                    <span
-                        id="result-char-button"
-                        class="result-char-message__result-count"
-                        [ngClass]="'result-char-message__result-count--' + getStatusButton()"
-                    >
-
-                        {{ charCountButton + ' / 25' }}
-                    </span>
+                    <app-configuration-count (limitChange)="onButtonLimitChange($event)" />
                 </div>
 
                 <div class="wpp-container__buttonTwo">
+                    <app-text-input 
+                        [label]="'2º botão'"
+                        [placeholder]="'Digite o 2º botão'"
+                        [maxlength]="25"
+                        [(value)]="whatsapp.buttonTwo"
+                        [limit]="limitButtonTwo"
+                        (valueChange)="onButtonTwoChange($event, $index)"
+                    />
 
-                    <label for="button">
-                        2º botão
-                        @if ($index > 0) {
-                            {{ $index + 1}}
-                        }
-                    </label>
-                    <textarea 
-                        class="textarea" 
-                        placeholder="Digite o 2º botão"
-                        (input)="onButtonTwoChange($event, $index)"
-                        [(ngModel)]="whatsapp.buttonTwo"
-                    ></textarea>
-
-                    <span
-                        id="result-char-buttonTwo"
-                        class="result-char-message__result-count"
-                        [ngClass]="'result-char-message__result-count--' + getStatusButtonTwo()"
-                    >
-
-                        {{ charCountButtonTwo + ' / 25' }}
-                    </span>
+                    <app-configuration-count (limitChange)="onButtonTwoLimitChange($event)" />
                 </div>
             </div>
-        
         }
 
-        <button 
-            class="wpp-container__button btn-primary-purple"
+        <app-button-clear
+            [label]="'Limpar'"
             (click)="clearWpp()"
-        >
-                Limpar
-        </button>
+        />
     </div>        
 
     <app-device-preview [width]="'630px'">
         <ng-content>
             <div class="wpp-container__preview-wpp">
                 <div class="wpp-container__background-wpp"></div>
-
                 <div class="wpp-container__box-enterprise">
                     <div class="wpp-container__box-top-wpp">
                         <div class="wpp-container__elements">
@@ -145,12 +107,22 @@
                             {{ getPreviewText(whatsapp.message) || 'Teste da sua mensagem (escreva até 350 caracteres para aparecer completa)' }}
                             
                             @if (shouldShowReadMore(whatsapp.message)) {
-                                <span
-                                    class="wpp-container__message-see-more"
-                                >
-                                    Ler mais
-                                </span>
+                                <button
+                                        class="wpp-container__message-see-more"
+                                        //(click)="openModal($index)"
+                                    >
+                                        Ler mais
+                                </button>
                             }
+
+                            <!-- <app-modal-wpp>
+                                <div class="wpp-container__modal-content">
+                                    <div class="wpp-container__modal-body">
+                                        {{ whatsapp.message }}
+                                    </div>
+                                </div>
+                            </app-modal-wpp>
+                            -->
                         </span>
 
                         <div class="wpp-container__botoes">

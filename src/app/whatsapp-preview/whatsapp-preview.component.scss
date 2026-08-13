@@ -1,5 +1,4 @@
 @use '../../styles/button' as *;
-@use '../../styles/textarea' as *;
 @use '../../styles/variables' as *;
 
 :host ::ng-deep .device-phone {
@@ -21,12 +20,6 @@
         font-weight: 650;
         color: #9061F9;
         margin-bottom: 0.8rem;
-    }
-
-    &__inputMessage {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
     }
 
     &__preview-wpp {
@@ -130,13 +123,6 @@
         margin-top: 15px;
     }
 
-    &__buttons {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        margin: 15px 0 20px 0;
-    }
-
     &__button,
     &__buttonTwo {
         display: flex;
@@ -155,31 +141,10 @@
     }
 
     &__message-see-more {
+        background: none;
+        border: none;
         color: #1DAA61;
-    }
-}
-
-.result-char-message__result-count {
-    display: inline-block;
-    width: fit-content;
-    height: auto;
-    font-size: 0.7rem;
-    color: $light-primary;
-    padding: 0.2rem 0.5rem;
-    border-radius: 20px;
-    background-color: $light-purple;
-    margin-top: 8px;
-
-    &--ok {
-        background-color: $light-purple;
-    }
-
-    &--warning {
-        background-color: $light-alert;
-    }
-
-    &--danger {
-        background-color: $light-red-error;
+        cursor: pointer;
     }
 }
 

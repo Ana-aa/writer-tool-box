@@ -1,16 +1,16 @@
-@use 'variables' as *;
+@use '../../../../styles/variables' as *;
 
 .btn-primary-purple {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     cursor: pointer;
     padding: 10px;
-    margin-top: 8px;
     background-color: $light-btn-primary;
     color: $light-primary;
     border: none;
     border-radius: $border-radius;
     text-decoration: none;
+    margin-top: 8px;
 
     &:hover {
         color: #dad9d9;
