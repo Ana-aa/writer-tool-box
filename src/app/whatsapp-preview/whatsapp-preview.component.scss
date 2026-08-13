@@ -6,8 +6,10 @@
     margin-top: 50px;
 }
 
-.textarea {
-    width: 400px;
+:host ::ng-deep .device-content {
+    width: 425px !important;
+    display: flex;
+    margin-left: 40px;
 }
 
 .wpp-container {
@@ -23,50 +25,54 @@
     }
 
     &__preview-wpp {
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        height: 500px;
+        height: 350px;
         border-radius: 16px 16px 0 0;
+        position: absolute;
+        z-index: -1;
+        background-image: url('../../assets/img/wpp.jpg');
     }
 
-    &__box-enterprise {
-        height: 15%;
-        display: flex;
+    &__box-top-wpp {
+        height: 40px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 5px;
         background-color: #1DAA61;
         border-radius: 10px 10px 0 0;
     }
 
     &__elements {
         display: flex;
+        width: 100%;
         flex-direction: row;
-        justify-content: space-between;
         align-items: center;
-        gap: 10px;
     }
 
     &__icon-back {
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
+        margin-bottom: 15px;
     }
 
     &__logo-icon {
-        width: 40px;
-        height: 40px;
+        width: 20px;
+        height: 20px;
         background-color: #B69FFB;
         border-radius: 50%;
         margin-left: 50px;
     }
 
     &__logo-tool {
-        width: 40px;
-        height: 40px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
     }
 
     &__name {
         font-size: 1rem;
-        margin: 0 40px 0 10px;
+        margin: 10px 0 10px 30px;
         color: #ffffff;
     }
 
@@ -75,15 +81,13 @@
         font-weight: 600;
         margin-left: 240px;
         color: #ffffff;
+        margin-bottom: 15px;
     }
 
-    &__background-wpp {
-        width: 100%;
-        height: 525px;
-        border-radius: 16px 16px 0 0;
-        position: absolute;
-        z-index: -1;
-        background-image: url('../../assets/img/wpp.jpg');
+    &__message {
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
     }
 
     &__date {
@@ -96,22 +100,29 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 10px;
-        padding: 8px 8px;
-        width: 70px;
-        height: 25px;
+        margin: 0 0 5px;
+        padding: 8px;
+        width: 40px;
+        height: 20px;
         background-color: #ffffff;
         border-radius: 10px;
-        font-size: 13px;
+        font-size: 9px;
     }
 
     &__message-wpp {
-        width: 400px;
-        height: auto;
-        margin: 10px 0 4px 10px;
+        width: 350px;
+        max-height: 280px;
+        margin: 0 0 4px 10px;
         padding: 10px 10px 0;
         background-color: #ffffff;
         border-radius: 0 8px 8px;
+        word-break: break-word;
+    }
+
+    &__message-text-wpp {
+        white-space: pre-wrap;
+        font-size: 12px;
+        max-height: 250px;
     }
 
     &__botoes {
@@ -119,25 +130,24 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        margin-top: 15px;
+        margin-top: 5px;
     }
 
     &__button,
     &__buttonTwo {
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     }
 
     &__btn-primary, 
     &__btn-outline {
         width: 300px;
-        padding: 10px;
+        padding: 5px;
         color: #1DAA61;
-        background-color: #ffffff;
         border-top: 1px solid rgb(185, 185, 185);
         text-align: center;
+        font-size: 12px;
     }
 
     &__message-see-more {
@@ -145,6 +155,7 @@
         border: none;
         color: #1DAA61;
         cursor: pointer;
+        font-size: 11px;
     }
 }
 

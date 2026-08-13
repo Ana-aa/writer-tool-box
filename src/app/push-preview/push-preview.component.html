@@ -13,9 +13,9 @@
                         [limit]="limitTitle"
                         (valueChange)="onTitleChange($event, $index)"
                     />
+                    <p ckass="push-preview-container__limit">* Limite máximo definido de 30 caracteres para o título</p>
 
                     <app-configuration-count (limitChange)="onTitleLimitChange($event)" />
-                    
                 </div>
 
                 <div class="push-preview-container__input-body">
@@ -28,6 +28,7 @@
                         (valueChange)="onBodyChange($event, $index)"
                         
                     />
+                    <p ckass="push-preview-container__limit">* Limite máximo definido de 94 caracteres para a mensagem</p>
 
                     <app-configuration-count (limitChange)="onBodyLimitChange($event)" />
     
@@ -95,18 +96,23 @@
                                 </div>
                             </div>
                         </div>
-                    
+                    <!--
                         @if (isExpanded) {
-                            <div class="push-container__container-expanded">
+                            <div 
+                                id="isExpanded"
+                                class="push-container__container-expanded"
+                            >
                                 <img 
                                     src="/assets/img/kt-wpp.png" 
                                     alt="Exemplo de imagem para push" 
                                     class="push-container__image"
                                 >
                             </div>
-                        }
+                        } -->
                     </div>
                 }
+
+
             </app-device-preview>
     </div>    
 </div>

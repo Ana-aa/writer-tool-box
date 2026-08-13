@@ -19,7 +19,7 @@
                         <app-text-input 
                             [label]="'Assunto'"
                             [placeholder]="'Digite ou cole o assunto aqui'"
-                            [maxlength]="90"
+                            [maxlength]="45"
                             [(value)]="email.headerText"
                             [limit]="limitHeader"
                             (valueChange)="onHeaderChange($event, $index)"
@@ -32,7 +32,7 @@
                         <app-text-input 
                             [label]="'Pré-header'"
                             [placeholder]="'Digite ou cole o pré-header aqui'"
-                            [maxlength]="100"
+                            [maxlength]="80"
                             [(value)]="email.preHeaderText"
                             [limit]="limitPreHeader"
                             (valueChange)="onPreHeaderChange($event, $index)"
@@ -107,8 +107,9 @@
                                     <span class="text-name-device">
                                         {{ email.nameEnterprise || 'Writer Tool Box' }}
                                     </span>
+                                    <span class="data">10:41</span>
                                 </div>
-                                <span class="data">10:41</span>
+                                
                                 
                                 <div class="text-header-preheader">
                                     <div class="text-header-email">

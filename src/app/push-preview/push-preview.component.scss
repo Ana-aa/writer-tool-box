@@ -1,8 +1,9 @@
 @use '../../styles/variables' as *;
 
 :host ::ng-deep .device-content {
-    width: 630px !important;
+    width: 425px !important;
     display: flex;
+    margin-left: 40px;
 }
 
 h1 {
@@ -26,6 +27,12 @@ h1 {
         margin-bottom: 0.8rem;
     }
 
+    p {
+        font-size: 12px;
+        margin-top: 5px;
+        color: #9061F9;
+    }
+
     &__input-device{
         display: flex;
         flex-direction: row;
@@ -33,25 +40,9 @@ h1 {
         
     }
 
-    &__input-text{
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        gap: 5px;
-        margin-right: 40px;
-    }
-
     &__input-title, 
     &__input-text-body {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-    }
-
-    .textarea {
-        width: 400px;
+        margin-bottom: 5px;
     }
 }
 
@@ -59,8 +50,7 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 630px;
-    min-height: 100px;
-    height: auto;
+    height: 130px;
     border-radius: 8px;
     background: #ece8fa;
     overflow: hidden;
@@ -75,19 +65,21 @@ h1 {
         width: 100%;
         background: inherit;
         border-radius: 8px 8px 0 0;
-    }
+        max-height: 500px;
+        opacity: 1;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out;
 
-    &__container-expanded {
-        width: 100%;
-        background: inherit;
-        border-radius: 0 0 8px 8px;
-    }
+        &--open {
+            max-height: 500px;
+            opacity: 1;
+        }
+    } 
 
     &__image {
         display: block;
-        width: 90%;
-        height: 90%;
-        margin: 10px 30px;
+        width: 5%;
+        margin: 10px;
         border-radius: 8px;
     }
 
@@ -121,7 +113,7 @@ h1 {
     }  
 
     &__title-device {
-        padding: 25px 5px 5px;
+        padding: 15px 0 0 0;
         width: 750px;
         height: auto;
     }
@@ -130,12 +122,12 @@ h1 {
         margin: 30px;
     }
 
-    &__arrow-icon {
-        transition: 1.0s;
-        &--open {
-            transform: rotate(180deg);
-        }
-    }
+    //&__arrow-icon {
+      //  transition: 1.0s;
+        //&--open {
+        //    transform: rotate(180deg);
+        //}
+    //}
 
     &__now-device,
     &__name {
@@ -150,7 +142,7 @@ h1 {
     &__body,
     &__title {
         display: flex;
-        margin: 0 0 10px 65px;
+        margin: 0 0 5px 25px;
     }
 }
 
@@ -177,47 +169,3 @@ h1 {
         background-color: $light-red-error;
     }
 }
-
-
-   /* 
-    &__top-elements {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        padding: 20px 5px 0;
-    }
-
-    &__elements {
-        display: flex;
-        flex-direction: row;
-        gap: 15px;
-        list-style-type: none;
-    }
-
-    
-
-    &__element-name {
-    }
-
-    &__element-now {
-        margin-right: 0;
-    }
-
-    &__arrow {
-        display: flex;
-        justify-content: flex-end;
-
-        img {
-            width: 20px;
-            height: 20px;
-        }
-    }
-
-    &__text-device {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 10px;
-        gap: 15px;
-    }
-    */
