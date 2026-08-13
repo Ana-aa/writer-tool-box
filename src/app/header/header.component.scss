@@ -39,4 +39,9 @@
             }
         }
     }
+
+    &__btn-header--active {
+    background-color: $light-btn-primary-hover;
+    color: #dad9d9 !important;
+}
 }

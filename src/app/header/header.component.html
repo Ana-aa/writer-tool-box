@@ -10,25 +10,45 @@
       <ul class="header-container__navigation-list">
 
         <li class="header-container__list-item">
-          <a class="header-container__btn-header" (click)="goToCountCaracter()">Contador de caracteres</a>
+          <a 
+            class="header-container__btn-header" 
+            routerLink="/count-caracter"
+            routerLinkActive="header-container__btn-header--active"
+          >
+            Contador de caracteres
+          </a>
         </li>
 
         <li class="header-container__list-item">
-          <a class="header-container__btn-header" (click)="goToPushPreview()">Preview de push</a>
+          <a 
+            class="header-container__btn-header" 
+            routerLink="/push-preview"
+            routerLinkActive="header-container__btn-header--active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            Preview de push
+          </a>
         </li>
 
         <li class="header-container__list-item">
-          <a class="header-container__btn-header" (click)="goToEmailPreview()">Preview de e-mail</a>
+          <a 
+            class="header-container__btn-header" 
+            routerLink="/email-preview"
+            routerLinkActive="header-container__btn-header--active"
+          >
+            Preview de e-mail
+          </a>
         </li>
 
         <li class="header-container__list-item">
-          <a class="header-container__btn-header" (click)="goToWppPreview()">Preview de whatsapp</a>
+          <a 
+            class="header-container__btn-header" 
+            routerLink="/whatsapp-preview"
+            routerLinkActive="header-container__btn-header--active"
+          >
+            Preview de whatsapp
+          </a>
         </li>
-
-        <!--<li class="header-container__list-item">
-          <a class="header-container__btn-header" (click)="goToConfigationCount()">Limites configuráveis</a>
-        </li>
-      -->
       </ul>
     </nav>
   </div>
