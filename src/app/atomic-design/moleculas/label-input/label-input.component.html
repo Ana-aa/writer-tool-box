@@ -1,0 +1,14 @@
+<section class="label-input">
+  <label [for]="inputId" class="label-input__label">
+    {{ label }}
+  </label>
+
+  <app-textarea
+    [id]="inputId"
+    [placeholder]="placeholder"
+    [maxlength]="maxlength"
+    [value]="value"
+    (valueChange)="onValueChange($event)"
+  />
+</section>
+ 

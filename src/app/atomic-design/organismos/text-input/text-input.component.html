@@ -1,0 +1,14 @@
+<app-label-input
+  [label]="label"
+  [placeholder]="placeholder"
+  [maxlength]="maxlength"
+  [value]="value"
+  (valueChange)="onValueChange($event)"
+/>
+
+<app-result-char
+  [value]="value"
+  [limit]="limit"
+/>
+
+
