@@ -20,7 +20,7 @@ import { ConfigurationCountComponent } from "../configuration/configuration-coun
 export class WhatsappPreviewComponent {
   @Input() limitMessage = 350;
   @Input() limitButton = 20;
-  @Input() limitButtonTwo = 20;
+  @Input() limitButtonTwo = 20; 
 
   charCount = 0;
   charCountMessage = 0;
@@ -58,7 +58,7 @@ export class WhatsappPreviewComponent {
     this.whatsapp = this.whatsapp.map((whatsapp) => ({
       message: whatsapp.message.slice(0, this.limitMessage),
       button: whatsapp.button.slice(0, this.limitButton),
-      buttonTwo: whatsapp.buttonTwo.slice(0, this.limitButtonTwo),
+      buttonTwo: whatsapp.buttonTwo.slice(0, this.limitButtonTwo)
     }));
 
     this.syncCountsFromWpp();

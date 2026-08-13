@@ -38,10 +38,12 @@
         align-items: flex-start;
         gap: 5px;
         margin-right: 0;
+        border-bottom: 2px solid #9061F9;
         box-sizing: border-box;
     }
 
-    &__input-header, &__input-pre-header {
+    &__input-header, 
+    &__input-pre-header {
         display: flex;
         flex-direction: column;
         gap: 5px;
@@ -224,32 +226,6 @@
     margin-top: 0.5rem;
 }
 
-.configuration {
-    margin-left: 48px;
-}
-
-.result-char-header__result-count {
-    display: inline-block;
-    width: fit-content;
-    height: auto;
-    font-size: 0.9rem;
-    color: $light-primary;
-    padding: 0.2rem 0.5rem;
-    border-radius: 20px;
-
-    &--ok {
-        background-color: $light-purple;
-    }
-
-    &--warning {
-        background-color: $light-alert;
-    }
-
-    &--danger {
-        background-color: $light-red-error;
-    }
-}
-
 .preview-tip {
     display: flex;
     align-items: center;
@@ -276,11 +252,4 @@
         margin: 0;
         white-space: pre-line;
     }
-}
-
-.title-config {
-    font-size: 2rem;
-    font-weight: 650;
-    color: #9061F9;
-    margin-bottom: 0.8rem;
 }

@@ -1,12 +1,12 @@
 <div class="wpp-container">
     <div class="wpp-container__textarea">
-        <h2>Preview de Whatsapp</h2>
+        <h2>Preview de WhatsApp</h2>
 
         @for (whatsapp of whatsapp; track $index) {
             <div class="wpp-container__inputMessage">
                 <app-text-input 
                     [label]="'Mensagem'"
-                    [placeholder]="'Digite a mensagem do Whatsapp'"
+                    [placeholder]="'Digite ou cole a mensagem aqui'"
                     [maxlength]="limitMessage"
                     [(value)]="whatsapp.message"
                     [limit]="limitMessage"
@@ -37,8 +37,8 @@
                 <div class="wpp-container__button">
                     <app-text-input 
                         [label]="'1º botão'"
-                        [placeholder]="'Digite o 1º botão'"
-                        [maxlength]="25"
+                        [placeholder]="'Digite ou cole o texto do botão aqui'"
+                        [maxlength]="20"
                         [(value)]="whatsapp.button"
                         [limit]="limitButton"
                         (valueChange)="onButtonChange($event, $index)"
@@ -50,8 +50,8 @@
                 <div class="wpp-container__buttonTwo">
                     <app-text-input 
                         [label]="'2º botão'"
-                        [placeholder]="'Digite o 2º botão'"
-                        [maxlength]="25"
+                        [placeholder]="'Digite ou cole o texto do botão aqui'"
+                        [maxlength]="20"
                         [(value)]="whatsapp.buttonTwo"
                         [limit]="limitButtonTwo"
                         (valueChange)="onButtonTwoChange($event, $index)"
@@ -66,7 +66,7 @@
             [label]="'Limpar'"
             (click)="clearWpp()"
         />
-    </div>        
+    </div>
 
     <app-device-preview [width]="'630px'">
         <ng-content>
@@ -104,7 +104,7 @@
                     <div class="wpp-container__message-wpp">
                         
                         <span class="wpp-container__message-text-wpp">
-                            {{ getPreviewText(whatsapp.message) || 'Teste da sua mensagem (escreva até 350 caracteres para aparecer completa)' }}
+                            {{ getPreviewText(whatsapp.message) || 'Sua mensagem aparecerá aqui conforme você digita.' }}
                             
                             @if (shouldShowReadMore(whatsapp.message)) {
                                 <button
@@ -114,15 +114,6 @@
                                         Ler mais
                                 </button>
                             }
-
-                            <!-- <app-modal-wpp>
-                                <div class="wpp-container__modal-content">
-                                    <div class="wpp-container__modal-body">
-                                        {{ whatsapp.message }}
-                                    </div>
-                                </div>
-                            </app-modal-wpp>
-                            -->
                         </span>
 
                         <div class="wpp-container__botoes">

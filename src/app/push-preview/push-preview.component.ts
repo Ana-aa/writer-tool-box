@@ -20,8 +20,8 @@ import { ConfigurationCountComponent } from "../configuration/configuration-coun
   styleUrl: './push-preview.component.scss',
 })
 export class PushPreview {
-  @Input() limitTitle = 50;
-  @Input() limitBody = 100;
+  @Input() limitTitle = 30;
+  @Input() limitBody = 94;
 
   @Output() limitChangeTitle = new EventEmitter<number>();
   @Output() limitChangeBody = new EventEmitter<number>();
@@ -110,8 +110,8 @@ export class PushPreview {
       body: '' 
     };
 
-    this.limitTitle = 50;
-    this.limitBody = 100;
+    this.limitTitle = 30;
+    this.limitBody = 94;
   }
 
   @ViewChild('resultCount') resultCount!: ElementRef;
