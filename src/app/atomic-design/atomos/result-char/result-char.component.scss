@@ -1,0 +1,23 @@
+@use '../../../../styles/variables' as *;
+
+.result-char__result-count {
+    display: inline-block;
+    width: fit-content;
+    height: auto;
+    font-size: 0.9rem;
+    color: $light-primary;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+
+    &--ok {
+        background-color: $light-purple;
+    }
+
+    &--warning {
+        background-color: $light-alert;
+    }
+
+    &--danger {
+        background-color: $light-red-error;
+    }
+}
