@@ -71,30 +71,25 @@
     <app-device-preview [width]="'630px'">
         <ng-content>
             <div class="wpp-container__preview-wpp">
-                <div class="wpp-container__background-wpp"></div>
                 <div class="wpp-container__box-enterprise">
                     <div class="wpp-container__box-top-wpp">
+                        
                         <div class="wpp-container__elements">
                             <img src="../../assets/img/back.png" alt="Seta para voltar" class="wpp-container__icon-back">
-                        
-                            <div class="wpp-container__logo-icon">
-                                <img 
-                                    src="../../assets/img/logo-writer-toolbox.svg" 
-                                    alt="Logo Writer Tool Box"
-                                    class="wpp-container__logo-tool"
-                                >
-                            </div>
-
+                            
                             <div class="wpp-container__name">
-                                Writer toolbox &#x2705;
+                                <p>Writer toolbox</p>
                             </div>
 
                             <div class="wpp-container__settings">
-                                . . .
+                               <p>...</p>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="wpp-container__message">
                 
                 <div class="wpp-container__date">
                     <div class="wpp-container__date-text">Hoje</div>
@@ -108,10 +103,10 @@
                             
                             @if (shouldShowReadMore(whatsapp.message)) {
                                 <button
-                                        class="wpp-container__message-see-more"
-                                        //(click)="openModal($index)"
-                                    >
-                                        Ler mais
+                                    class="wpp-container__message-see-more"
+                                            //(click)="openModal($index)"
+                                >
+                                    Ler mais
                                 </button>
                             }
                         </span>
