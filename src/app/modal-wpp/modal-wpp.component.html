@@ -1,0 +1,19 @@
+<dialog 
+    #modalElement
+    class="modal"
+>
+    <div class="modal__content">
+        <div class="modal__body">
+            <ng-content></ng-content>
+        </div>
+        
+        <div class="modal__actions">
+            <button 
+                class="btn" 
+                (click)="close()"
+            >
+                Fechar
+            </button>
+        </div>
+    </div>
+</dialog>
