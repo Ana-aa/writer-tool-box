@@ -7,20 +7,18 @@
                     <div class="email-preview-container__input-header">
                         <app-text-input 
                             [label]="'Nome da empresa'"
-                            [placeholder]="'Digite o nome da empresa'"
+                            [placeholder]="'Digite ou cole o nome da empresa aqui'"
                             [maxlength]="30"
                             [(value)]="email.nameEnterprise"
                             [limit]="limitName"
-                            (valueChange)="onNameChange($event, $index)"
+                            (valueChange)="onNameChange($event, $index)" 
                         />
-
-                        <app-configuration-count (limitChange)="onNameLimitChange($event)" />
                     </div>
 
                     <div class="email-preview-container__input-header">
                         <app-text-input 
                             [label]="'Assunto'"
-                            [placeholder]="'Digite o assunto do e-mail'"
+                            [placeholder]="'Digite ou cole o assunto aqui'"
                             [maxlength]="90"
                             [(value)]="email.headerText"
                             [limit]="limitHeader"
@@ -33,7 +31,7 @@
                     <div class="email-preview-container__input-pre-header">
                         <app-text-input 
                             [label]="'Pré-header'"
-                            [placeholder]="'Digite o pré-header do e-mail'"
+                            [placeholder]="'Digite ou cole o pré-header aqui'"
                             [maxlength]="100"
                             [(value)]="email.preHeaderText"
                             [limit]="limitPreHeader"
@@ -41,8 +39,6 @@
                         />
 
                         <app-configuration-count (limitChange)="onPreHeaderLimitChange($event)" />
-
-
 
                         @if (shouldShowPreviewTip($index)) {
                             <div class="preview-tip">
@@ -67,7 +63,7 @@
             <div class="btn-preview">
                 <button 
                     class="btn-primary-purple"
-                    (click)="addNewPeview()"
+                    (click)="addNewPreview()"
                     [disabled]="emails.length >= 2"
                 >
                     Adicionar + 
@@ -134,19 +130,4 @@
             </div>
         </app-device-preview>
     </div>
-</div>
-
-<div class="configuration">
-    <h2 class="title-config">Configurações</h2>
-    <app-configuration-count (limitChange)="onNameLimitChange($event)">
-        <span class="config-count__span">Nome empresa</span>
-    </app-configuration-count>
-
-    <app-configuration-count (limitChange)="onHeaderLimitChange($event)">
-        <span class="config-count__span">Assunto</span>
-    </app-configuration-count>
-
-    <app-configuration-count (limitChange)="onPreHeaderLimitChange($event)">
-        <span class="config-count__span">Pré-header</span>
-    </app-configuration-count>
 </div>

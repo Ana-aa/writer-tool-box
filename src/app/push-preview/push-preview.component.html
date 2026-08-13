@@ -7,8 +7,8 @@
                 <div class="push-preview-container__input-title">
                     <app-text-input 
                         [label]="'Título'"
-                        [placeholder]="'Digite o título do push'"
-                        [maxlength]="100"
+                        [placeholder]="' Digite ou cole o título aqui'"
+                        [maxlength]="30"
                         [(value)]="push.title"
                         [limit]="limitTitle"
                         (valueChange)="onTitleChange($event, $index)"
@@ -20,9 +20,9 @@
 
                 <div class="push-preview-container__input-body">
                     <app-text-input 
-                        [label]="'Corpo do push'"
-                        [placeholder]="'Digite o corpo do push'"
-                        [maxlength]="100"
+                        [label]="'Mensagem'"
+                        [placeholder]="'Digite ou cole a mensagem aqui'"
+                        [maxlength]="94"
                         [(value)]="push.body"
                         [limit]="limitBody"
                         (valueChange)="onBodyChange($event, $index)"
@@ -83,14 +83,14 @@
 
                             <div class="push-container__title-device">
                                 <span class="push-container__title">
-                                    {{ getPreviewText(push.title) ||'Teste do título no device' }}
+                                    {{ getPreviewText(push.title) ||'Título do push' }}
                                 </span>
                             </div>
 
                             <div class="push-container__body">
                                 <div class="push-container__text-device">
                                     <span class="push-container__text">
-                                        {{ getPreviewBody(push.body) ||'Teste do corpo no Device' }} 
+                                        {{ getPreviewBody(push.body) ||'A mensagem do push aparecerá aqui.' }} 
                                     </span>
                                 </div>
                             </div>

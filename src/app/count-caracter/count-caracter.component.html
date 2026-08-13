@@ -4,9 +4,10 @@
         #textArea
         class="textarea"
         id="textarea"
-        placeholder="Digite seu texto aqui"
+        placeholder="Digite ou cole seu texto aqui"
         (input)="onTextChange($event)"
     ></textarea>
+    
     <div class="count-caracter__result">
         <div class="count-caracter__char-bar-container">
             <div 
@@ -27,9 +28,7 @@
             </span>
         </div>        
 
-    <app-configuration-count (limitChange)="onLimitChange($event)">
-        <span class="config-count__span">chars</span>
-    </app-configuration-count>
+    <app-configuration-count (limitChange)="onLimitChange($event)" />
 
     <app-button-clear
         [label]="'Limpar'"

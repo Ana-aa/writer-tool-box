@@ -23,10 +23,10 @@ describe('EmailPreview', () => {
   it('should allow only one extra preview block', () => {
     expect(component.emails.length).toBe(1);
 
-    component.addNewPeview();
+    component.addNewPreview();
     expect(component.emails.length).toBe(2);
 
-    component.addNewPeview();
+    component.addNewPreview();
     expect(component.emails.length).toBe(2);
   });
 

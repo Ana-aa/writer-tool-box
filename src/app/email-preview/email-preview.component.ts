@@ -19,8 +19,8 @@ import { TextInputComponent } from "../atomic-design/organismos/text-input/text-
 })
 export class EmailPreview {
   @Input() limitName = 30;
-  @Input() limitHeader = 90;
-  @Input() limitPreHeader = 100;
+  @Input() limitHeader = 45;
+  @Input() limitPreHeader = 80;
 
   charCount = 0;
   charCountName = 0;
@@ -135,13 +135,15 @@ export class EmailPreview {
     this.applyLimitsToEmails();
   }
 
-  addNewPeview() { // Adiciona um novo preview de e-mail, limitando a quantidade máxima de previews a 2
+  addNewPreview() { // Adiciona um novo preview de e-mail, limitando a quantidade máxima de previews a 2
     if (this.emails.length >= 2) {
       return;
     }
 
+    const firstName = this.emails && this.emails.length > 0 ? this.emails[0].nameEnterprise : '';
+
     this.emails.push({ 
-      nameEnterprise: this.currentName,
+      nameEnterprise: firstName || '',
       headerText: this.currentHeader,
       preHeaderText: this.currentPreHeader
     });
@@ -164,15 +166,15 @@ export class EmailPreview {
 
     this.currentName = '';
     this.charCountName = 0;
-    this.limitName = 30;
+    this.limitName = 30; 
 
     this.currentHeader = '';
     this.charCountHeader = 0;
-    this.limitHeader = 90;
+    this.limitHeader = 45;
 
     this.currentPreHeader = '';
     this.charCountPreHeader = 0;
-    this.limitPreHeader = 100;
+    this.limitPreHeader = 80;
   }
 
   @ViewChild('resultCount') resultCount!: ElementRef;
