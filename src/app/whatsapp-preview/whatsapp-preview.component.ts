@@ -19,8 +19,8 @@ import { ConfigurationCountComponent } from "../configuration/configuration-coun
 })
 export class WhatsappPreviewComponent {
   @Input() limitMessage = 350;
-  @Input() limitButton = 25;
-  @Input() limitButtonTwo = 25;
+  @Input() limitButton = 20;
+  @Input() limitButtonTwo = 20;
 
   charCount = 0;
   charCountMessage = 0;
