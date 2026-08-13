@@ -36,7 +36,7 @@
     }
 
     &__box-top-wpp {
-        height: 50px;
+        height: 40px;
         margin: 0 auto;
         padding: 5px;
         background-color: #1DAA61;
@@ -100,22 +100,29 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 10px;
-        padding: 8px 8px;
-        width: 70px;
-        height: 25px;
+        margin: 0 0 5px;
+        padding: 8px;
+        width: 40px;
+        height: 20px;
         background-color: #ffffff;
         border-radius: 10px;
-        font-size: 13px;
+        font-size: 9px;
     }
 
     &__message-wpp {
         width: 350px;
-        height: auto;
-        margin: 10px 0 4px 10px;
+        max-height: 280px;
+        margin: 0 0 4px 10px;
         padding: 10px 10px 0;
         background-color: #ffffff;
         border-radius: 0 8px 8px;
+        word-break: break-word;
+    }
+
+    &__message-text-wpp {
+        white-space: pre-wrap;
+        font-size: 12px;
+        max-height: 250px;
     }
 
     &__botoes {
@@ -123,8 +130,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        margin-top: 15px;
+        margin-top: 5px;
     }
 
     &__button,
@@ -137,11 +143,11 @@
     &__btn-primary, 
     &__btn-outline {
         width: 300px;
-        padding: 10px;
+        padding: 5px;
         color: #1DAA61;
-        background-color: #ffffff;
         border-top: 1px solid rgb(185, 185, 185);
         text-align: center;
+        font-size: 12px;
     }
 
     &__message-see-more {
@@ -149,6 +155,7 @@
         border: none;
         color: #1DAA61;
         cursor: pointer;
+        font-size: 11px;
     }
 }
 
