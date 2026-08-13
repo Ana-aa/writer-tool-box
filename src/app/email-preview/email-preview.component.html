@@ -66,7 +66,7 @@
                     (click)="addNewPreview()"
                     [disabled]="emails.length >= 2"
                 >
-                    Adicionar + 
+                    + Adicionar versão 
                 </button> 
 
                 <app-button-clear
@@ -113,13 +113,13 @@
                                 <div class="text-header-preheader">
                                     <div class="text-header-email">
                                         <span class="text-header-device">
-                                            {{ truncateText(email.headerText, 45) || 'Seu próximo texto começa aqui ✨' }}
+                                            {{ truncateText(email.headerText, 45) || 'Seu assunto aparecerá aqui' }}
                                         </span>
                                     </div>
 
                                     <div class="text-pre-header-email">
                                         <span class="text-pre-header-device">
-                                            {{ truncateText(email.preHeaderText, 60) || 'Teste assuntos, pré-headers e descubra como seu conteúdo pode aparecer antes mesmo da abertura do e-mail. ' }} 
+                                            {{ truncateText(email.preHeaderText, 60) || 'O pré-header complementa o assunto na caixa de entrada.' }} 
                                         </span>
                                     </div>
                                 </div>
